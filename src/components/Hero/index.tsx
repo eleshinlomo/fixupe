@@ -12,29 +12,13 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-green-700 dark:text-green-400 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Nigeria&apos;s best staffing firm.
+                  DETECT HUMAN AND OBJECTS IN REAL-TIME.
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Established in 2016, we have successfully placed over 10,000 workers across leading sectors in Nigeria. 
-                We serve as a vital partner to both public and private sectors throughout the country. 
+                Why pay for security surveillance camera services if you still have to watch your camera 24/7. 
+                Our AI Solution will be your watchman, send you real-time alerts enabling you to take action immediately.
                 </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Link
-                    href="/"
-                    className="rounded-sm bg-green-600 px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out
-                     hover:bg-green-700"
-                  >
-                    🔥 POST JOBS
-                  </Link>
-                  <Link
-                    href="/jobs"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 
-                    ease-in-out hover:bg-black/90
-                     dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                  >
-                    FIND JOBS
-                  </Link>
-                </div>
+          
               </div>
             </div>
           </div>

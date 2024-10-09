@@ -13,8 +13,8 @@ const Video = () => {
     <section className="relative z-10 py-16 md:py-20 lg:py-4">
       <div className="container">
         <SectionTitle
-          title="We are ready to help"
-          paragraph="Let us get you your next job."
+          title="WATCH VIDEO"
+          paragraph="See how our human detector works."
           center
           mb="80px"
         />
