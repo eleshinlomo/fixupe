@@ -3,10 +3,15 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <>
+
+    <div className="bg-transparent">
+    
       <section
         id="home"
         className="relative z-10 overflow-hidden bg-white pb-2 pt-[120px] dark:bg-gray-dark  md:pt-[150px]  xl:pt-[180px]  2xl:pt-[210px]"
       >
+         <a href='/authpages/signinpage'><button 
+         className="absolute top-[10px] right-[10px] bg-green-600 px-2 rounded-2xl">Admin</button></a>
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -265,6 +270,7 @@ const Hero = () => {
           </svg>
         </div>
       </section>
+      </div>
     </>
   );
 };

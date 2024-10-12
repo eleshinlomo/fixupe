@@ -4,6 +4,7 @@ import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Video from "@/components/Video";
 import { Metadata } from "next";
+import SigninPage from "../authpages/signinpage/page";
 
 export const metadata: Metadata = {
   title: "Petrolage recruitment",
@@ -14,10 +15,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <ScrollUp />
+     
       <Hero />
       <Contact />
       <Video />
+      <ScrollUp />
   
       
     </>
