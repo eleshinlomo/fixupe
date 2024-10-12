@@ -7,13 +7,17 @@ const Contact = () => {
 
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
-  const [message, setMessage] = useState<string>('Be one of the first to use this new technology.')
+  const [message, setMessage] = useState<string>('')
   const [emailSent, setEmailSent] = useState<boolean>(false)
 
   const handleWaitlist = async  (e: React.FormEvent<HTMLFormElement>)=>{
     const response = await Waitlist(e, name, email)
+    if(response.ok){
     setMessage(response.message)
     setEmailSent(true)
+    }else{
+      setMessage(response.error)
+    }
   }
 
 
@@ -24,14 +28,14 @@ const Contact = () => {
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 ">
             <div
-              className="mb-12 rounded-sm bg-white px-8 py-11 shadow-three dark:bg-gray-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
+              className="mb-2 rounded-sm bg-white px-8 py-5 shadow-three dark:bg-gray-dark sm:p-[15px] lg:mb-5 lg:px-8 xl:p-[15px]"
               data-wow-delay=".15s
               "
             >
               <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
                 Join the Waitlist
               </h2>
-              <p className="mb-12 text-base font-medium text-body-color">
+              <p className="mb-12 text-base font-medium text-red-700 font-extrabold">
                 {message}
               </p>
               {emailSent ? null :
@@ -76,7 +80,7 @@ const Contact = () => {
                  
                   <div className="w-full px-4">
                     <button type='submit'
-                    className="rounded-sm bg-green-600 px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
+                    className="rounded-2xl mb-5 bg-green-600 px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
                       Send message
                     </button>
                   </div>
