@@ -2,10 +2,8 @@
 import Link from "next/link";
 import {useState, useEffect, useContext, ChangeEvent, FormEvent} from 'react'
 import {  GeneralContext } from "@/contextproviders/generalcontext";
-
-
 import { Metadata } from "next";
-import { getPayload } from "@/components/auth";
+
 
 // export const metadata: Metadata = {
 //   title: "Sign In Page | ideafro",
@@ -21,7 +19,6 @@ const SigninPage = () => {
   // We are getting all these values from the generalContext Provider
   const {
     username, 
-    isLoggedIn,
     email, 
     password, 
     message, 
