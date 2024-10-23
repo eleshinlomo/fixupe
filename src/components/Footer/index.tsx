@@ -1,41 +1,30 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { GeneralContext } from "@/contextproviders/generalcontext";
+import { useContext } from "react";
 
 const Footer = () => {
+  const generalContext = useContext(GeneralContext)
+  const {pageName} = generalContext
+  
   return (
     <>
       <footer className="relative z-10 bg-white pt-16 dark:bg-gray-dark md:pt-20 lg:pt-24">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-              <div className="mb-12 max-w-[360px] lg:mb-16">
-                <Link href="/" className="mb-8 inline-block">
-                  <Image
-                    src="/images/logo/petrolage_logo.png"
-                    alt="logo"
-                    className="w-12 dark:hidden"
-                    width={140}
-                    height={30}
-                  />
-                  <Image
-                    src="/images/logo/petrolage_logo.png"
-                    alt="logo"
-                    className="hidden w-12 dark:block"
-                    width={140}
-                    height={30}
-                  />
-                </Link>
-                <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  We power the best projects in Nigeria.
-                </p>
-                <div className="flex items-center">
+          
+        
+              
+
+                  {/* Social Icons */}
+                  <div className="">
+                    <p>Join {pageName? <span className="text-green-500">{pageName}</span> : <span className="text-green-500">My Afros</span>} on social media</p>
                   <a
                     href="/"
                     aria-label="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    className="flex mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                   >
                     <svg
                       width="18"
@@ -106,136 +95,24 @@ const Footer = () => {
                   </a>
                 </div>
               </div>
-            </div>
-
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Useful Links
-                </h2>
-                <ul>
-                  <li>
-                    <Link
-                      href="/blog"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500
-                       dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500
-                       dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      About
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Terms
-                </h2>
-                <ul>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500 
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      TOS
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500 
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Refund Policy
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Support & Help
-                </h2>
-                <ul>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500 
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      Terms of Use
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-green-500 
-                      dark:text-body-color-dark dark:hover:text-green-500"
-                    >
-                      About
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            
+         
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-white">
-              Designed by{" "}
+        
               <a
-                href="https://myafros.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/"
+      
                 className="hover:text-primary"
               >
-                Myafros
+                Rapid product launch by MyAfros.
               </a>{" "}
              
             </p>
           </div>
-        </div>
+        
         <div className="absolute right-0 top-14 z-[-1]">
           <svg
             width="55"

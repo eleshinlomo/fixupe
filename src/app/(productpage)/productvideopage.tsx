@@ -2,22 +2,21 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import SectionTitle from "./sectiontitle";
+import ProductSectionTitle from "./productsectiontitle";
 
 import ModalVideo from "react-modal-video";
-import Link from "next/link";
 
-const Video = () => {
+const ProductVideoPage = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section className="relative z-10 py-16 md:py-20 lg:py-4">
+    <section className="relative z-10 ">
       <div className="container">
-        <SectionTitle
-          title="YOU GET A VIDEO PLAYER TO SHOW YOUR VIDEO"
-          paragraph="Your page also gets a video player to emphasize your product."
+        <ProductSectionTitle
+          title="WATCH VIDEO"
+          paragraph="See how our human detector works."
           center
-          mb="20px"
+          mb="10px"
         />
 
         <div className="-mx-4 flex flex-wrap">
@@ -60,10 +59,9 @@ const Video = () => {
         onClose={() => setOpen(false)}
       />
 
-
       <div className="absolute bottom-0 left-0 right-0 z-[-1] h-full w-full bg-[url(/video/shape.svg)] bg-cover bg-center bg-no-repeat"></div>
     </section>
   );
 };
 
-export default Video;
+export default ProductVideoPage;

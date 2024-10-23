@@ -1,15 +1,6 @@
-'use client'
-import Link from "next/link";
-import Header from "../Header";
-import { GeneralContext } from "@/contextproviders/generalcontext";
-import {useState, useEffect, useContext} from 'react'
-import { AuthContext } from "@/contextproviders/authprovider";
 
-const Hero = () => {
 
-  const authContext = useContext(AuthContext)
-  const {isLoggedIn} = authContext
-
+const ProductHero = ({pageName}) => {
   return (
     <>
 
@@ -17,27 +8,23 @@ const Hero = () => {
     
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pb-2 pt-[120px] dark:bg-gray-dark  md:pt-[150px]  xl:pt-[180px]  2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-white pb-2 py-[100px] dark:bg-gray-dark  "
       >
        
         <div className="container">
-          <div className="-mx-4 flex flex-wrap justify-center items-center">
+          <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[700px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-green-700 dark:text-green-400 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  VALIDATE AND LAUNCH PRODUCT FASTER.
+              <div className="mx-auto max-w-[800px] text-center">
+              <h1 className="gradient-title font-extrabold text-3xl md:text-3xl lg:text-5xl tracking-tighter md:px-6 text-center py-8 animate-pulse">
+                   {pageName? pageName.toUpperCase() : null}
+                  </h1>
+                <h1 className="mb-5 text-3xl font-bold leading-tight text-green-700 dark:text-green-400 sm:text-4xl sm:leading-tight md:text-3xl md:leading-tight">
+                  DETECT HUMAN AND OBJECTS IN REAL-TIME.
                 </h1>
-                <p className="text-center mx-0 mb-12  text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Get a landing page in a minute and begin to share and validate your idea with the world.
+                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                Why pay for security surveillance camera services if you still have to watch your camera 24/7. 
+                Our AI Solution will be your watchman, send you real-time alerts enabling you to take action immediately.
                 </p>
-                
-                {isLoggedIn?
-                <Link href='/dashboard/dashboardpage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Dashboard</button></Link>:
-                <Link href='/authpages/signuppage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Get started</button></Link>
-                }
-              
           
               </div>
             </div>
@@ -290,4 +277,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default ProductHero;

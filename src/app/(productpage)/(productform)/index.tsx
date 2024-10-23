@@ -1,55 +1,45 @@
 'use client'
-import Link from "next/link";
-import {useState, useEffect, useContext, ChangeEvent, FormEvent} from 'react'
-import {  GeneralContext } from "@/contextproviders/generalcontext";
-import { Metadata } from "next";
-import DashboardPage from "@/app/dashboard/dashboardpage/page";
-import { AuthContext } from "@/contextproviders/authprovider";
+import { Waitlist } from '@/components/waitlist'; 
+import {useState, useEffect} from 'react'
+import ProductVideoPage from '../productvideopage';
 
 
-// export const metadata: Metadata = {
-//   title: "Sign In Page | ideafro",
-//   description: "This is Sign In Page for Ideafro",
-//   // other metadata
-// };
+const ProductForm = () => {
 
-const SigninPage = () => {
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
+  const [error, setError] = useState('')
+  const [emailSent, setEmailSent] = useState<boolean>(false)
+  const [btnText, setBtnText] = useState<string>('Submit')
 
-  const getGeneralContext = useContext(GeneralContext)
-
-  // We are getting all these values from the generalContext Provider
-  const {
-    username, 
-    email, 
-    password, 
-    message, 
-    btnText,
-    error,
-    login, 
-    setEmail, 
-    setPassword,
-  } = getGeneralContext
-
-  const authContext = useContext(AuthContext)
-  const {isLoggedIn} = authContext
+  const handleWaitlist = async  (e: React.FormEvent<HTMLFormElement>)=>{
+    setBtnText('Submitting...')
+    const response = await Waitlist(e, name, email)
+    if(response.ok){
+    setMessage(response.message)
+    setEmailSent(true)
+    setBtnText('Message sent')
+    setName('')
+    setEmail('')
+    }else{
+      setError(response.error)
+      setBtnText('Submit')
+    }
+  }
 
 
-  useEffect(()=>{
-
-  }, [isLoggedIn])
-
+  
  
   return (
     <>
-      { isLoggedIn ? <DashboardPage /> :
-
-      <section className="relative z-10 overflow-hidden pb-16 pt-24 md:pb-20 lg:pb-28">
-        <div className="container">
+      <section className="relative z-10 overflow-hidden pb-6 pt-6 ">
+        <div className="grid  md:grid-cols-2 md:grid-cols-2">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Sign in for Clients only  
+                  Join our waitlist
                 </h3>
 
                 {error ?
@@ -119,8 +109,27 @@ const SigninPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div> */}
-                <form onSubmit={login}>
-                  
+
+            
+                <form onSubmit={handleWaitlist}>
+
+                <div className="mb-8">
+                    <label
+                      htmlFor="password"
+                      className="mb-3 block text-sm text-dark dark:text-white"
+                    >
+                      Your Name
+                    </label>
+                    <input
+                      value={name}
+                      onChange={(e)=>setName(e.target.value)}
+                      type="text"
+                      name="name"
+                      placeholder="Enter your Name"
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                    />
+                  </div>
+
                   <div className="mb-8">
                     <label
                       htmlFor="email"
@@ -137,65 +146,8 @@ const SigninPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
-                  <div className="mb-8">
-                    <label
-                      htmlFor="password"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
-                      Your Password
-                    </label>
-                    <input
-                      value={password}
-                      onChange={(e)=>setPassword(e.target.value)}
-                      type="password"
-                      name="password"
-                      placeholder="Enter your Password"
-                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                    />
-                  </div>
-                  <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
-                    <div className="mb-4 sm:mb-0">
-                      <label
-                        htmlFor="checkboxLabel"
-                        className="flex cursor-pointer select-none items-center text-sm font-medium text-body-color"
-                      >
-                        <div className="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabel"
-                            className="sr-only"
-                          />
-                          <div className="box mr-4 flex h-5 w-5 items-center justify-center rounded border border-body-color border-opacity-20 dark:border-white dark:border-opacity-10">
-                            <span className="opacity-0">
-                              <svg
-                                width="11"
-                                height="8"
-                                viewBox="0 0 11 8"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                                  fill="#3056D3"
-                                  stroke="#3056D3"
-                                  strokeWidth="0.4"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                        Keep me signed in
-                      </label>
-                    </div>
-                    <div>
-                      <a
-                        href="/authpages/forgotpassword"
-                        className="text-sm font-medium text-green-500 hover:underline"
-                      >
-                        Forgot Password?
-                      </a>
-                    </div>
-                  </div>
+                 
+                  
                   <div className="mb-6">
                     <button type='submit'
                     className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center
@@ -204,15 +156,16 @@ const SigninPage = () => {
                     </button>
                   </div>
                 </form>
-                <p className="text-center text-base font-medium text-body-color">
-                  Get your own product launch account{" "}
-                  <Link href="/authpages/signuppage" className="text-green-500 hover:underline">
-                    Sign up
-                  </Link>
-                </p>
+
+              
+                
               </div>
+
+              
             </div>
+           
           </div>
+          <ProductVideoPage />
         </div>
         <div className="absolute left-0 top-0 z-[-1]">
           <svg
@@ -271,9 +224,10 @@ const SigninPage = () => {
             </defs>
           </svg>
         </div>
-      </section>}
+      </section>
     </>
   );
 };
 
-export default SigninPage;
+export default ProductForm;
+

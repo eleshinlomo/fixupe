@@ -1,14 +1,65 @@
+'use client'
+import {useState, useEffect, ChangeEvent} from 'react'
 import Link from "next/link";
+import { registerAPI } from "@/components/auth";
+import { passMatch } from "@/components/auth";
 
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Sign Up Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign Up Page for Startup Nextjs Template",
-  // other metadata
-};
+
+
 
 const SignupPage = () => {
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repassword, setRepassword] = useState('')
+  const [heading, setHeading] = useState('Create your account')
+  const [usersource, setUsersource] = useState('landingpage app')
+  const [message, setMessage] = useState('Fastrack your product launch by validating your idea.')
+  const [error, setError] = useState('')
+  const [btnMsg, setBtnMsg] = useState('Sign up')
+  const [notRegistered, setNotRegistered] = useState(true)
+  
+
+  
+
+  const handleUserRegistration = async (e: ChangeEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    setError('')
+    setMessage('Registering new user...')
+    setBtnMsg('Registering')
+
+     if(password !== repassword){
+      setMessage('')
+      setError('Password must match')
+      setBtnMsg('Password must match')
+      return
+     }
+
+    const payload = {
+      username,
+      email,
+      password,
+      usersource
+    }
+     
+   
+
+    const response: any = await registerAPI({payload})
+    console.log(response)
+    if (response.ok){
+      setBtnMsg('Sign up')
+      setMessage(response.message)
+      setHeading('Welcome')
+      setNotRegistered(false)
+    }else
+     setMessage('')
+     setBtnMsg('Please fix error')
+     setError(response.error)
+  }
+
+
   return (
     <>
       <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
@@ -16,13 +67,15 @@ const SignupPage = () => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
+                {/* Heading */}
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Create your account
+                  {heading}
                 </h3>
-                <p className="mb-11 text-center text-base font-medium text-body-color">
-                  It’s totally free and super easy
+                {/* Message or Error */}
+                <p className="mb-11 text-center text-base font-extrabold text-body-color">
+                  {message ? message : <p className='text-red-500 font-extrabold'>{error}</p>}
                 </p>
-                <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
+                {/* <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
                       width="20"
@@ -57,9 +110,9 @@ const SignupPage = () => {
                     </svg>
                   </span>
                   Sign in with Google
-                </button>
+                </button> */}
 
-                <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
+                {/* <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
                       fill="currentColor"
@@ -72,27 +125,35 @@ const SignupPage = () => {
                     </svg>
                   </span>
                   Sign in with Github
-                </button>
-                <div className="mb-8 flex items-center justify-center">
+                </button> */}
+                {/* <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
                   <p className="w-full px-5 text-center text-base font-medium text-body-color">
                     Or, register with your email
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
-                </div>
-                <form>
+                </div> */}
+
+
+                {/* Show form only when user is unregistered */}
+                { notRegistered ?
+                
+                <form onSubmit={handleUserRegistration}>
                   <div className="mb-8">
                     <label
                       htmlFor="name"
                       className="mb-3 block text-sm text-dark dark:text-white"
                     >
                       {" "}
-                      Full Name{" "}
+                    Your Username{" "}
                     </label>
                     <input
+                      value={username}
+                      onChange={(e)=>setUsername(e.target.value)}
                       type="text"
-                      name="name"
-                      placeholder="Enter your full name"
+                      name="username"
+                      placeholder="Enter your Username"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
@@ -102,12 +163,15 @@ const SignupPage = () => {
                       className="mb-3 block text-sm text-dark dark:text-white"
                     >
                       {" "}
-                      Work Email{" "}
+                    Your Email{" "}
                     </label>
                     <input
                       type="email"
                       name="email"
+                      value={email}
+                      onChange={(e)=>setEmail(e.target.value)}
                       placeholder="Enter your Email"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
@@ -122,10 +186,36 @@ const SignupPage = () => {
                     <input
                       type="password"
                       name="password"
+                      value={password}
+                      onChange={(e)=>setPassword(e.target.value)}
                       placeholder="Enter your Password"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
+                  <div className="mb-8">
+                    <label
+                      htmlFor="password"
+                      className="mb-3 block text-sm text-dark dark:text-white"
+                    >
+                      {" "}
+                      Retype Password{" "}
+                    </label>
+                    <input
+                      type="password"
+                      name="repassword"
+                      value={repassword}
+                      onChange={(e)=>setRepassword(e.target.value)}
+                      placeholder="Enter your Password"
+                      required
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                    />
+                  </div>
+
+                  
+
+                  
+
                   <div className="mb-8 flex">
                     <label
                       htmlFor="checkboxLabel"
@@ -171,15 +261,18 @@ const SignupPage = () => {
                     </label>
                   </div>
                   <div className="mb-6">
-                    <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center 
+                    <button type='submit' className="shadow-submit dark:shadow-submit-dark flex w-full items-center 
                     justify-center rounded-sm bg-green-700 px-9 py-4 text-base font-medium text-white duration-300 hover:bg-green-700">
-                      Sign up
+                      {btnMsg}
                     </button>
                   </div>
-                </form>
+                </form>:null
+                  }
+                  {/* End of form */}
+
                 <p className="text-center text-base font-medium text-body-color">
-                  Already using Startup?{" "}
-                  <Link href="/signin" className="text-green-500 hover:underline">
+                  Already registered?{" "}
+                  <Link href="/authpages/signinpage" className="text-green-500 hover:underline">
                     Sign in
                   </Link>
                 </p>

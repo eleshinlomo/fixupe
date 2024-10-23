@@ -21,16 +21,27 @@ export default function RootLayout({
       <head />
 
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
-        <GeneralProvider>
+        
         <Providers>
+        <GeneralProvider>
+          
+          <AuthProvider>
+          <HeaderPage />
           {children}
+          <Footer />
+          </AuthProvider>
+         </GeneralProvider>
           <ScrollToTop />
         </Providers>
-        </GeneralProvider>
+        
       </body>
     </html>
   );
 }
 
 import { Providers } from "./providers";import { GeneralProvider } from "@/contextproviders/generalcontext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeaderPage from "@/components/Header";
+import { AuthProvider } from "@/contextproviders/authprovider";
 

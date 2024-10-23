@@ -1,56 +1,58 @@
+'use client'
+import { useContext } from "react";
 import { Menu } from "@/types/menu";
+import { HomeIcon, LogInIcon, LogOutIcon, SettingsIcon } from "lucide-react";
+import React from "react";
+import ThemeToggler from "./ThemeToggler";
+import { GeneralContext } from "@/contextproviders/generalcontext";
 
-const menuData: Menu[] = [
+
+
+interface SubMenuProps {
+  id: number,
+  title: string,
+  path?: string,
+  newTab: boolean,
+}
+
+interface MenuProps {
+
+    id: number;
+    title: string;
+    path?: string;
+    newTab: boolean;
+    target: string;
+    icon: React.ReactNode,
+    iconColor: string,
+    submenu?: SubMenuProps[];
+
+}
+
+
+
+const menuData = [
   {
     id: 1,
     title: "Home",
     path: "/",
     newTab: false,
+    iconColor: 'blue',
+    icon: <HomeIcon />,
+    target: '',
+    
   },
+
   {
     id: 2,
-    title: "About",
-    path: "/about",
+    target: '',
+    title: "Admin",
+    iconColor: 'green',
+    icon: <SettingsIcon />,
+    path: "http://localhost:3000/dashboard/dashboardpage",
     newTab: false,
   },
-  {
-    id: 3,
-    title: "Support",
-    path: "/contact",
-    newTab: false,
-  },
-  {
-    id: 33,
-    title: "Jobs",
-    path: "/jobs",
-    newTab: false,
-  },
-  {
-    id: 4,
-    title: "Quick links",
-    newTab: false,
-    submenu: [
-      {
-        id: 41,
-        title: "About us",
-        path: "/about",
-        newTab: false,
-      },
-      {
-        id: 42,
-        title: "Contact us",
-        path: "/contact",
-        newTab: false,
-      },
-      {
-        id: 43,
-        title: "Blog",
-        path: "/blog",
-        newTab: false,
-      },
-     
-    
-    ],
-  },
+ 
+
+  
 ];
 export default menuData;

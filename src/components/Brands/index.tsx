@@ -4,11 +4,15 @@ import brandsData from "./brandsData";
 
 const Brands = () => {
   return (
-    <section className="pt-2">
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
-            <div className="flex flex-wrap items-center justify-center rounded-sm bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
+    <section className=" w-full bg-gray-light 
+            py-8 dark:bg-gray-dark">
+      <div className="">
+        <div className="- flex flex-wrap">
+          <div className="w-full text-center font-extrabold text-2xl">
+          <p>AS SEEN ON</p>
+            <div className="w-full flex flex-wrap items-center justify-center rounded-sm 
+            py-8   md:py-[40px]  2xl:py-[60px]">
+              
               {brandsData.map((brand) => (
                 <SingleBrand key={brand.id} brand={brand} />
               ))}

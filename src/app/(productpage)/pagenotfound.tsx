@@ -1,15 +1,6 @@
-'use client'
-import Link from "next/link";
-import Header from "../Header";
-import { GeneralContext } from "@/contextproviders/generalcontext";
-import {useState, useEffect, useContext} from 'react'
-import { AuthContext } from "@/contextproviders/authprovider";
 
-const Hero = () => {
 
-  const authContext = useContext(AuthContext)
-  const {isLoggedIn} = authContext
-
+const PageNotFound = ({pageName}) => {
   return (
     <>
 
@@ -21,23 +12,15 @@ const Hero = () => {
       >
        
         <div className="container">
-          <div className="-mx-4 flex flex-wrap justify-center items-center">
+          <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[700px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-green-700 dark:text-green-400 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  VALIDATE AND LAUNCH PRODUCT FASTER.
+              <div className="mx-auto max-w-[800px] text-center">
+                <h1 className="mb-5 text-3xl font-bold leading-tight text-green-700 dark:text-red-400 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+                  PAGE NAME NOT FOUND.
                 </h1>
-                <p className="text-center mx-0 mb-12  text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Get a landing page in a minute and begin to share and validate your idea with the world.
+                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                The rquested page name <span className="text-red-400">{pageName}</span> was not found to be a valid page in our database.
                 </p>
-                
-                {isLoggedIn?
-                <Link href='/dashboard/dashboardpage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Dashboard</button></Link>:
-                <Link href='/authpages/signuppage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Get started</button></Link>
-                }
-              
           
               </div>
             </div>
@@ -290,4 +273,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default PageNotFound;
