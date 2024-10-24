@@ -17,7 +17,7 @@ const initialValue = {
  password: '',
  btnText: '',
  error: '',
- login: (e: FormEvent<HTMLFormElement>)=>{},
+//  login: (e: FormEvent<HTMLFormElement>)=>{},
  setEmail: (value: string)=>{},
  setPassword: (value: string)=>{},
  validProducts: [],
@@ -52,36 +52,7 @@ const validProducts = [
 
 
 
-const login = async (e: FormEvent<HTMLFormElement>)=>{
-  e.preventDefault()
-  try{
-  setMessage('Signing in...')
-  setBtnText('Signing in...')
-  const payload = {
-    email,
-    password
-  }
-   const response = await loginApi({payload})
-   if(response.ok){
-    setBtnText('Signed in')
-    setEmail('Signed in')
-    setPassword('')
-    setError('')
-    window.location.href = '/dashboard/dashboardpage'
 
-  }else{
-
-    setError(response.error)
-    console.log(response.error)
-    setBtnText('Sign in')
-    return
-
-  }
-}catch(err){
-  setMessage('Error with api call. Check console.')
-  console.log(error)
-}
-}
 
 
   
@@ -94,7 +65,6 @@ const login = async (e: FormEvent<HTMLFormElement>)=>{
     password,
     btnText,
     error,
-    login,
     setEmail,
     setPassword,
     validProducts,

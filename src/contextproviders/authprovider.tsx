@@ -1,10 +1,17 @@
-import { loginChecker } from "@/components/auth";
-import { createContext } from "react";
-import {useState, useEffect} from 'react'
+import { getCsrfToken, loginApi, loginChecker } from "@/components/auth";
+import {useState, useEffect, useContext, FormEvent, createContext} from 'react'
 
 const initialValues = {
   user: null,
-  isLoggedIn: false
+  isLoggedIn: false,
+  message: '',
+  email: '',
+  password: '',
+  btnText: '',
+  error: '',
+  login: (e: FormEvent<HTMLFormElement>)=>{},
+  setEmail: (value: string)=>{},
+  setPassword: (value: string)=>{},
 }
 
 export const AuthContext = createContext(initialValues)
@@ -14,9 +21,49 @@ export const AuthProvider = ({children})=>{
 
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [message, setMessage] = useState<string>('')
+  const [error, setError] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [btnText, setBtnText] = useState('Sign in')
+  const [loginInitiated, setLoginInitiated] = useState(false)
+
+  const login = async (e: FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    try{
+    setMessage('Signing in...')
+    setBtnText('Signing in...')
+    const payload = {
+      email,
+      password
+    }
+     const response = await loginApi({payload})
+     if(response.ok){
+      setBtnText('Signed in')
+      setEmail('Signed in')
+      setPassword('')
+      setError('')
+      setLoginInitiated(true)
+      window.location.href = '/dashboard/dashboardpage'
+      
+    }else{
+  
+      setError(response.error)
+      console.log(response.error)
+      setBtnText('Sign in')
+      return
+  
+    }
+  }catch(err){
+    setMessage('Error with api call. Check console.')
+    console.log(error)
+  }
+  }
+
 
   const handleLoginChecker = async ()=>{
-
+    const csrf = getCsrfToken()
+    if(csrf === null) return
     const response = await loginChecker()
     if(response.ok){
       console.log(response)
@@ -32,11 +79,19 @@ export const AuthProvider = ({children})=>{
 
   useEffect(()=>{
     handleLoginChecker()
-  }, [isLoggedIn])
+  }, [loginInitiated])
 
   const values = {
     user,
-    isLoggedIn
+    isLoggedIn,
+    message,
+    email,
+    password,
+    btnText,
+    login,
+    error,
+    setEmail,
+    setPassword,
   }
 
   return (

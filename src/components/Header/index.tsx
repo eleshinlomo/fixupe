@@ -13,7 +13,8 @@ import { SettingsIcon } from "lucide-react";
 
 
 const HeaderPage = () => {
-
+  
+  const [logoutBtnTxt, setLogoutBtnTxt] = useState('Logout')
   const generalContext = useContext(GeneralContext)
   const authContext = useContext(AuthContext)
   const {isLoggedIn} = authContext
@@ -21,8 +22,9 @@ const HeaderPage = () => {
   const router = useRouter()
 
   const handleLogout = async ()=>{
-    localStorage.removeItem('isLoggedIn')
+    setLogoutBtnTxt('Wait...')
     const response = await logoutApi()
+
     console.log(response)
   }
 
@@ -30,9 +32,6 @@ const HeaderPage = () => {
 
   },[isLoggedIn])
 
-  const navigateToSignIn = ()=>{
-    router.push('/authpages/signinpage')
-  }
 
   
 
@@ -164,8 +163,8 @@ const HeaderPage = () => {
 
                       {isLoggedIn ?
                       <button className="mx-4 px-8 py-2 bg-green-700 text-white rounded-2xl"
-                      onClick={logoutApi}
-                      >Logout</button> :
+                      onClick={handleLogout}
+                      >{logoutBtnTxt}</button> :
                       <Link href='/authpages/signinpage'><button className="mx-4 px-8 py-2 bg-green-700 text-white  rounded-2xl"
                       >Login</button></Link>}
 

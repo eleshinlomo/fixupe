@@ -15,11 +15,11 @@ import { AuthContext } from "@/contextproviders/authprovider";
 
 const SigninPage = () => {
 
-  const getGeneralContext = useContext(GeneralContext)
+  const authContext = useContext(AuthContext)
 
   // We are getting all these values from the generalContext Provider
   const {
-    username, 
+    isLoggedIn,
     email, 
     password, 
     message, 
@@ -28,10 +28,9 @@ const SigninPage = () => {
     login, 
     setEmail, 
     setPassword,
-  } = getGeneralContext
+  } = authContext
 
-  const authContext = useContext(AuthContext)
-  const {isLoggedIn} = authContext
+ 
 
 
   useEffect(()=>{

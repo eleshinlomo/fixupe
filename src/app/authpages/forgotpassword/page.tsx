@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useState, useEffect, useContext, ChangeEvent, FormEvent} from 'react'
 import {  GeneralContext } from "@/contextproviders/generalcontext";
 import { Metadata } from "next";
+import { AuthContext } from "@/contextproviders/authprovider";
 
 
 // export const metadata: Metadata = {
@@ -13,12 +14,12 @@ import { Metadata } from "next";
 
 const SigninPage = () => {
 
-  const getGeneralContext = useContext(GeneralContext)
+  const authContext = useContext(AuthContext)
   const [btnText, setBtnText] = useState('Reset password')
 
   // We are getting all these values from the generalContext Provider
   const {
-    username, 
+    
     email, 
     password, 
     message, 
@@ -26,8 +27,8 @@ const SigninPage = () => {
     login, 
     setEmail, 
     setPassword,
-    passResetMessage,
-  } = getGeneralContext
+    
+  } = authContext
 
 
 
@@ -48,7 +49,7 @@ const SigninPage = () => {
                   {error}
                 </p> :
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                {passResetMessage}
+                {/* {passResetMessage} */}
                  </p>
                 }
 
