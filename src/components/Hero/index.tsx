@@ -29,7 +29,7 @@ const Hero = () => {
                   VALIDATE AND LAUNCH PRODUCT FASTER.
                 </h1>
                 <p className="text-center mx-0 mb-12  text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Get your own landing page in a minute, begin to share and validate your idea with the world.
+                Get your own landing page in a minute and begin to validate your ideas with the world.
                 </p>
                 
                  <GetStartedButton />

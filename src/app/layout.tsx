@@ -1,17 +1,33 @@
 "use client";
-
+import {useContext} from 'react'
 import ScrollToTop from "@/components/ScrollToTop";
 import { Inter } from "next/font/google";
 import "node_modules/react-modal-video/css/modal-video.css";
 import "../styles/index.css";
+import { usePathname, useParams } from "next/navigation";
+import { Providers } from "./providers";import { GeneralProvider } from "@/contextproviders/generalcontext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeaderPage from "@/components/Header";
+import { AuthContext, AuthProvider } from "@/contextproviders/authprovider";
+import { GeneralContext } from '@/contextproviders/generalcontext';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+const RootLayout = ({children}: RootLayoutProps)=> {
+
+  const path = usePathname()
+  const generalContext = useContext(GeneralContext)
+  // const {pageName} = generalContext
+ 
+  const params = useParams()
+  const pageParams = params.product?.toString()
+
   return (
     <html suppressHydrationWarning lang="en">
       {/*
@@ -26,9 +42,9 @@ export default function RootLayout({
         <GeneralProvider>
           
           <AuthProvider>
-          <HeaderPage />
+          {path === '/' + pageParams ? null : <HeaderPage />}
           {children}
-          <Footer />
+          {path === '/' + pageParams ? null : <Footer />}
           </AuthProvider>
          </GeneralProvider>
           <ScrollToTop />
@@ -39,9 +55,6 @@ export default function RootLayout({
   );
 }
 
-import { Providers } from "./providers";import { GeneralProvider } from "@/contextproviders/generalcontext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import HeaderPage from "@/components/Header";
-import { AuthProvider } from "@/contextproviders/authprovider";
+export default RootLayout
+
 

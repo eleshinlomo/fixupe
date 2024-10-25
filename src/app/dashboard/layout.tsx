@@ -36,13 +36,7 @@ const DashboardLayout = ({children}: DashboardLayoutPorps)=>{
     
     <div className="">
    
-     <div className="bg-black text-white h-screen fixed w-44">
-      <DashSidebar />
-    </div>
-     
-     <div className="ml-44">
-     {children}
-     </div>
+    {children}
     </div>:
 
     <SigninPage />

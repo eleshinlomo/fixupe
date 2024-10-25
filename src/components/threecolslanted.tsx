@@ -31,7 +31,7 @@ const ThreeColsSlanted = ()=> {
             Set-up a landing page for your idea in just 5 minutes
               </h2>
           <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-            Direct your traffic to your page and manage validate your idea.
+            Direct traffic to your page and start validating your ideas.
               </p>
         </div>
       </div>
@@ -52,10 +52,10 @@ const ThreeColsSlanted = ()=> {
             <i className="fas fa-poll text-xl"></i>
           </div>
           <h5 className="text-xl mt-5 font-semibold text-green-500">
-            Set-up our landing page
+            Set-up your landing page
               </h5>
           <p className="mt-2 mb-4 text-gray-500">
-           Our AI will help you complete most of your texts and images needed.
+           Our AI will help you complete most of the texts and images needed.
               </p>
         </div>
         <div className="w-full lg:w-3/12 px-4 text-center">
@@ -66,7 +66,7 @@ const ThreeColsSlanted = ()=> {
             Run campaigns
               </h5>
           <p className="mt-2 mb-4 text-gray-500">
-            Start running campaigns and send your traffic to your landing page. Validate your idea.
+            Start running campaigns and send your traffic to the landing page. Validate your idea!
               </p>
         </div> 
       </div>
