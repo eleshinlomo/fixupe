@@ -5,41 +5,18 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState, useContext } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
-import { GeneralContext } from "@/contextproviders/generalcontext";
-import { logoutApi } from "../auth";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contextproviders/authprovider";
-import { SettingsIcon } from "lucide-react";
+import { logoutApi } from "../auth";
 
 
-const HeaderPage = () => {
+const Header = () => {
   
-  const [logoutBtnTxt, setLogoutBtnTxt] = useState('Logout')
-  const generalContext = useContext(GeneralContext)
+  const [navbarOpen, setNavbarOpen] = useState(false);
   const authContext = useContext(AuthContext)
   const {isLoggedIn} = authContext
 
-  const router = useRouter()
-
-  const handleLogout = async ()=>{
-    setLogoutBtnTxt('Wait...')
-    const response = await logoutApi()
-
-    console.log(response)
-  }
-
-  useEffect(()=>{
-
-  },[isLoggedIn])
-
-
-  
-
-  // Pathname
-  const pathname = usePathname()
 
   // Navbar toggle
-  const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
@@ -72,19 +49,18 @@ const HeaderPage = () => {
   return (
     <>
       <header
-        className={`header  z-[9999] flex justify-center items-center ${
+        className={`header left-0 top-0 z-40 flex w-full items-center ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999] bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
             : "absolute bg-transparent"
         }`}
       >
-        <div className="">
-          {/* Logo */}
-          <div className="relative -mx-4 flex justify-start">
-            <div className="w-[70px] max-w-full px-4 ">
+        <div className="container">
+          <div className="relative -mx-4 flex items-center justify-between">
+            <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
                 href="/"
-                className={`header-logo block w-full  ${
+                className={`header-logo block w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
@@ -93,14 +69,19 @@ const HeaderPage = () => {
                   alt="logo"
                   width={140}
                   height={30}
-                  className="w-12 "
+                  className="w-12 dark:hidden"
                 />
-              
+                <Image
+                  src="/images/logo/petrolage_logo.png"
+                  alt="logo"
+                  width={140}
+                  height={30}
+                  className="hidden w-12 dark:block"
+                />
               </Link>
             </div>
-            
-            {/* Mobile. Hidden on widescreen */}
-            <div className="relative -mx-4 ">
+            <div className="flex w-full items-center justify-between px-4">
+              <div>
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
@@ -125,64 +106,107 @@ const HeaderPage = () => {
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 
-                    duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none 
-                    lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+                  className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                     navbarOpen
                       ? "visibility top-full opacity-100"
                       : "invisible top-[120%] opacity-0"
                   }`}
                 >
-                  </nav>
-                </div>
-
-                  {/* MenuItems Container */}
-                  <div className="hidden md:flex justify-center items-center  space-x-12">
-                    
+                  <ul className="block lg:flex lg:space-x-12">
                     {menuData.map((menuItem, index) => (
-
-
-                      <div key={index} className=" my-4 relative ">
-                        
+                      <li key={index} className="group relative">
+                        {menuItem.path ? (
                           <Link
-                           target={menuItem.target}
-                            href={`${menuItem.path}`}
-                            
-                            // className="ease-in-up shadow-btn hover:shadow-btn-hover  bg-green-600 
-                            // px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 
-                            // md:block md:px-9 lg:px-6 xl:px-9 rounded-2xl"
+                            href={menuItem.path}
+                            className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
+                              usePathName === menuItem.path
+                                ? "text-primary dark:text-white"
+                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+                            }`}
                           >
-                           
-                            <div className={`text-${menuItem.iconColor}-300 }`}>{menuItem.icon}</div>
+                            {menuItem.title}
                           </Link>
-                
-                      </div>
+                        ) : (
+                          <>
+                            <p
+                              onClick={() => handleSubmenu(index)}
+                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
+                            >
+                              {menuItem.title}
+                              <span className="pl-3">
+                                <svg width="25" height="24" viewBox="0 0 25 24">
+                                  <path
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </p>
+                            <div
+                              className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                                openIndex === index ? "block" : "hidden"
+                              }`}
+                            >
+                              {menuItem.submenu.map((submenuItem, index) => (
+                                <Link
+                                  href={submenuItem.path}
+                                  key={index}
+                                  className="block rounded py-2.5 text-sm text-dark hover:text-primary dark:text-white/70 dark:hover:text-white lg:px-3"
+                                >
+                                  {submenuItem.title}
+                                </Link>
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </li>
                     ))}
-                    <div className="flex gap-4">
-                    <ThemeToggler />
-
-                      {isLoggedIn ?
-                      <button className="mx-4 px-8 py-2 bg-green-700 text-white rounded-2xl"
-                      onClick={handleLogout}
-                      >{logoutBtnTxt}</button> :
-                      <Link href='/authpages/signinpage'><button className="mx-4 px-8 py-2 bg-green-700 text-white  rounded-2xl"
-                      >Login</button></Link>}
-
-                     
-
-                    
-                    </div>
+                  </ul>
+                </nav>
               </div>
-               {/* MenuItems Container End */}
+                
+                <div className="flex items-center justify-end pr-16 lg:pr-0">
+                {isLoggedIn ?
 
-               
-              
+                <Link
+                    href="/dashboard/dashboardpage">
+                      <button className="ease-in-up shadow-btn hover:shadow-btn-hover hidden  bg-green-600 
+                  px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 
+                  md:block md:px-9 lg:px-6 xl:px-9 rounded-2xl"
+                  onClick={logoutApi}
+                  >Sign Out</button>
+                  
+                  </Link>:
+
+                <div className="flex">
+                  <Link
+                  href="/authpages/signinpage"
+                  className="hidden px-7 py-3 text-base font-medium text-dark hover:opacity-70 dark:text-white md:block"
+                >
+                  Sign In
+                </Link>
+                <Link href="/authpages/signuppage">
+                  <button className="ease-in-up shadow-btn hover:shadow-btn-hover hidden  bg-green-600 
+                  px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 
+                  md:block md:px-9 lg:px-6 xl:px-9 rounded-2xl">Sign Up</button>
+                </Link>
+                </div> 
+                }
+                
+                <div>
+                  <ThemeToggler />
+                </div>
+              </div>
+
+
             </div>
           </div>
-        
+        </div>
       </header>
     </>
   );
 };
 
-export default HeaderPage;
+export default Header;

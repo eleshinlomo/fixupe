@@ -10,28 +10,28 @@ export interface TestimonialProps {
 export const testimonialData: TestimonialProps[] = [
 {
   id: 1,
-  name: "Adetoun Waters",
+  name: "Peters Shrobs",
   designation: "Nurse",
   content:
-    "Petrolage played a crucial role in securing my current position. Their recruiters demonstrated unparalleled professionalism throughout the process.",
+    "Finally a solution to keep track of our patients.This is an essential tool for every keeper",
   image: "/images/testimonials/auth-01.png",
   star: 5,
 },
 {
   id: 2,
-  name: "Emilia Tokunbo",
+  name: "Fiji Yita",
   designation: "Software Engineer",
   content:
-    "I found my current job on the petrolage's website. I recommend this platform to anyone looking for opportunities in the Nigerian tech. Big thanks to the team.",
+    "I connected this to my home camera and was able to detect a hidden fox in my yard.",
   image: "/images/testimonials/auth-02.png",
   star: 5,
 },
 {
   id: 3,
-  name: "Shane Okoro",
+  name: "Paul Shan",
   designation: "Petroleum Engineer",
   content:
-    "After finishing my masters in Petroleum Engineering, I started applying for jobs on this platform. Today I work with a company I love. Grateful to the Petrolage team.",
+    "Camsecure object detector will save your life. Highly recommended. It is also affordable",
   image: "/images/testimonials/auth-03.png",
   star: 5,
 },

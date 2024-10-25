@@ -10,28 +10,28 @@ export interface TestimonialProps {
 export const testimonialData: TestimonialProps[] = [
 {
   id: 1,
-  name: "Adetoun Waters",
-  designation: "Nurse",
+  name: "Filipe Perez",
+  designation: "Business Owner",
   content:
-    "Petrolage played a crucial role in securing my current position. Their recruiters demonstrated unparalleled professionalism throughout the process.",
+    "Fixupe is the real deal. We got 500 users in just one week. Recommended for all Product Managers.",
   image: "/images/testimonials/auth-01.png",
   star: 5,
 },
 {
   id: 2,
-  name: "Emilia Tokunbo",
-  designation: "Software Engineer",
+  name: "Evans Chuks",
+  designation: "MD, Peso",
   content:
-    "I found my current job on the petrolage's website. I recommend this platform to anyone looking for opportunities in the Nigerian tech. Big thanks to the team.",
+    "I love the dashboard. It feels like we are already in business with all the tools we had access to.",
   image: "/images/testimonials/auth-02.png",
   star: 5,
 },
 {
   id: 3,
-  name: "Shane Okoro",
-  designation: "Petroleum Engineer",
+  name: "Tyler Combs",
+  designation: "Former Truck Driver",
   content:
-    "After finishing my masters in Petroleum Engineering, I started applying for jobs on this platform. Today I work with a company I love. Grateful to the Petrolage team.",
+    "I never knew my idea was worth a couple of thousands until I put out a landing page.",
   image: "/images/testimonials/auth-03.png",
   star: 5,
 },

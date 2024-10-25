@@ -11,8 +11,8 @@ const ProductTestimonialPage = () => {
     <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-4">
       <div className="container">
         <ProductSectionTitle
-          title="Testimonials"
-          paragraph="We don&apos;t blow our own trumpet. Hear from our users."
+          title="What early adopters say"
+          paragraph="Read what product testers say."
           center
         />
 

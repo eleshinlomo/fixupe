@@ -56,6 +56,7 @@ const ProductPage = ()=> {
           
           <ProductHero pageName={pageName} />
           <Brands />
+          <ProductVideoPage />
           <ProductContact />
           <ProductTestimonialPage />
           <ScrollUp />

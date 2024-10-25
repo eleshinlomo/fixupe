@@ -4,6 +4,7 @@ import Header from "../Header";
 import { GeneralContext } from "@/contextproviders/generalcontext";
 import {useState, useEffect, useContext} from 'react'
 import { AuthContext } from "@/contextproviders/authprovider";
+import GetStartedButton from "../getstartedbtn";
 
 const Hero = () => {
 
@@ -28,15 +29,10 @@ const Hero = () => {
                   VALIDATE AND LAUNCH PRODUCT FASTER.
                 </h1>
                 <p className="text-center mx-0 mb-12  text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Get a landing page in a minute and begin to share and validate your idea with the world.
+                Get your own landing page in a minute, begin to share and validate your idea with the world.
                 </p>
                 
-                {isLoggedIn?
-                <Link href='/dashboard/dashboardpage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Dashboard</button></Link>:
-                <Link href='/authpages/signuppage'>
-                <button className="py-2 px-4 my-4 bg-green-700 rounded-2xl">Get started</button></Link>
-                }
+                 <GetStartedButton />
               
           
               </div>

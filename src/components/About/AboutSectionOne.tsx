@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import moneyImage from '../../../public/gifs/money-8760.gif'
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-green-500">
@@ -22,14 +23,14 @@ const AboutSectionOne = () => {
   );
 
   return (
-    <section id="about" className="pt-2 md:pt-2 lg:pt-2">
+    <section id="about" className="pt-28">
       <div className="container">
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="We power the job market in Nigeria."
-                paragraph="We started in Lagos in 2016 focusing mainly on oil and gas recruitment. By 2019, we expanded our reach to other sectors. Now we support over 15 industries in Nigeria."
+                title="Fixupe is a landing page auto generator."
+                paragraph="Get your project to the world in a minute so you can spend time only on ideas that work."
                 mb="44px"
               />
 
@@ -37,6 +38,11 @@ const AboutSectionOne = () => {
                 className="mb-12 max-w-[570px] lg:mb-0"
                 data-wow-delay=".15s"
               >
+
+                <p className="mb-16 flex flex-wrap">Fixupe is an intiative of  
+                 <a href='https://myafros.com' className="text-green-300 px-2"> Myafros.</a>
+                Myafros provides software solution for the following industries:</p>
+
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
                     <List text="IT" />
@@ -55,14 +61,9 @@ const AboutSectionOne = () => {
 
             <div className="w-full px-4 lg:w-1/2">
               <div className="relative mx-auto aspect-[25/24] max-w-[500px] lg:mr-0">
+             
                 <Image
-                  src="/images/about/about-image.svg"
-                  alt="about-image"
-                  fill
-                  className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
-                />
-                <Image
-                  src="/images/about/about-image-dark.svg"
+                  src={moneyImage}
                   alt="about-image"
                   fill
                   className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0 "

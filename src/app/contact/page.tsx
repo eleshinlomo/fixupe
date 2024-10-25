@@ -1,20 +1,13 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
+import Contact from "@/components/Contact"
 
-import { Metadata } from "next";
+const ContactPage = ()=>{
 
-
-const ContactPage = () => {
   return (
-    <>
-      <Breadcrumb
-        pageName="Contact Page"
-        description="We like reading from people. Please drop us a message."
-      />
 
-      <Contact />
-    </>
-  );
-};
+    <div className="pt-24">
+     <Contact />
+    </div>
+  )
+}
 
-export default ContactPage;
+export default ContactPage

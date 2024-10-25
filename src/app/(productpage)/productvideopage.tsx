@@ -10,7 +10,7 @@ const ProductVideoPage = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section className="relative z-10 ">
+    <section className="relative z-9999">
       <div className="container">
         <ProductSectionTitle
           title="WATCH VIDEO"

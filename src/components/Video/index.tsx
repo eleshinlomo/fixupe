@@ -11,7 +11,7 @@ const Video = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section className="relative z-10 py-16 md:py-20 lg:py-4">
+    <section className="relative z-9999 py-16 md:py-20 lg:py-4">
       <div className="container">
         <SectionTitle
           title="YOU GET A VIDEO PLAYER TO SHOW YOUR VIDEO"
