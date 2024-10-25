@@ -31,9 +31,31 @@ export const registerAPI = async ({payload})=>{
 }
 
 
+
+
+// This fetches csrf before login
+// export const fetchCsrfToken = async () => {
+//   const response = await fetch(`${BASE_URL}/loginuser/`, {
+//     method: 'POST',
+//     mode: 'cors',
+//     credentials: 'include',  // Include cookies
+//   });
+
+//   if (!response.ok) {
+//     throw new Error('Failed to fetch CSRF token');
+//   }
+
+//   const csrfToken = getCsrfToken(); // Get the token from cookies after request
+//   console.log(`CSRF Token: ${csrfToken}`);
+//   return csrfToken;
+// };
+
+
+
 // Login
 export const loginApi = async ({payload})=>{
-  
+  try{
+ 
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
   mode: 'cors',
@@ -49,10 +71,13 @@ export const loginApi = async ({payload})=>{
  if(!response) throw new Error('No response from server')
   const data: any = await response.json()
   return data
+}catch(err){
+  console.log(err)
+}
 }
 
 
-// Get csrf token
+// Get csrf token (Only used once user is logged in)
 export const getCsrfToken  = ()=>{
 
   const cookies = document.cookie.split(';');
@@ -63,15 +88,18 @@ export const getCsrfToken  = ()=>{
   return null;
 }
 
+
+
 // Login Checker
 export const loginChecker = async ()=>{
-  
+  const csrf = getCsrfToken()
+  if(!csrf) return
   const response = await fetch(`${BASE_URL}/loginchecker/`, {
     mode: 'cors',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      // 'X-csrftoken': csrf
+      'X-csrftoken': csrf
 
     },
     credentials: 'include',

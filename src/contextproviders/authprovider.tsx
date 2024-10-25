@@ -56,6 +56,7 @@ export const AuthProvider = ({children})=>{
     }
   }catch(err){
     setMessage('Error with api call. Check console.')
+    setBtnText('Sign in')
     console.log(error)
   }
   }
