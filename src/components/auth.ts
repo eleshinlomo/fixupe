@@ -48,7 +48,10 @@ export const fetchCsrfToken = async () => {
     method: 'POST',
     mode: 'cors',
     credentials: 'include', 
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({})
   });
 
