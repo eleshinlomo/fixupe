@@ -31,6 +31,10 @@ const SigninPage = () => {
   } = authContext
 
  
+  const handleLogin = (e: FormEvent<HTMLFormElement>)=>{
+   e.preventDefault()
+     login()
+  }
 
 
   useEffect(()=>{
@@ -118,7 +122,7 @@ const SigninPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div> */}
-                <form onSubmit={login}>
+                <form onSubmit={handleLogin}>
                   
                   <div className="mb-8">
                     <label

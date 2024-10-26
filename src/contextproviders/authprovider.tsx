@@ -9,7 +9,7 @@ const initialValues = {
   password: '',
   btnText: '',
   error: '',
-  login: (e: FormEvent<HTMLFormElement>)=>{},
+  login: ()=>{},
   setEmail: (value: string)=>{},
   setPassword: (value: string)=>{},
 }
@@ -31,8 +31,8 @@ export const AuthProvider = ({children})=>{
 
  
 
-  const login = async (e: FormEvent<HTMLFormElement>)=>{
-    e.preventDefault()
+  const login = async ()=>{
+  
     try{
     setMessage('Signing in...')
     setBtnText('Signing in...')
