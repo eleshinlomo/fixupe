@@ -64,33 +64,33 @@ export const AuthProvider = ({children})=>{
   }
 
 
-  // const handleLoginChecker = async ()=>{
-  //   const csrf = getCsrfToken()
-  //   if(csrf === null) return
-  //   const response = await loginChecker()
-  //   if(response.ok){
+  const handleLoginChecker = async ()=>{
+    const csrf = getCsrfToken()
+    if(csrf === null) return
+    const response = await loginChecker()
+    if(response.ok){
       
-  //     console.log(response)
-  //     const userData = {
-  //       userid : response.message.userid,
-  //       username: response.message.username,
-  //     }
-  //     let newUser = []
-  //     newUser.push(userData)
-  //     localStorage.setItem('user', JSON.stringify(newUser))
-  //     localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
-  //     setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
-  //     return
-  //   }
+      console.log(response)
+      const userData = {
+        userid : response.message.userid,
+        username: response.message.username,
+      }
+      let newUser = []
+      newUser.push(userData)
+      localStorage.setItem('user', JSON.stringify(newUser))
+      localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
+      setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
+      return
+    }
      
-  //   setIsLoggedIn(false)
-  //   return
+    setIsLoggedIn(false)
+    return
     
-  // }
+  }
 
-  // useEffect(()=>{
-  //   handleLoginChecker()
-  // }, [loginInitiated])
+  useEffect(()=>{
+    handleLoginChecker()
+  }, [loginInitiated])
 
   const values = {
     user,
