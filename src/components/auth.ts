@@ -47,7 +47,9 @@ export const fetchCsrfToken = async () => {
   const response = await fetch(`${BASE_URL}/getcsrf/`, {
     method: 'POST',
     mode: 'cors',
-    credentials: 'include',  
+    credentials: 'include', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({})
   });
 
   if (!response.ok) {
