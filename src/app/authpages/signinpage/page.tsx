@@ -48,7 +48,7 @@ const SigninPage = () => {
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Sign in for Clients only  
+                  Sign in
                 </h3>
 
                 {error ?

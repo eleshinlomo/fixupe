@@ -67,7 +67,15 @@ export const AuthProvider = ({children})=>{
     if(csrf === null) return
     const response = await loginChecker()
     if(response.ok){
+      
       console.log(response)
+      const userData = {
+        userid : response.message.userid,
+        username: response.message.username,
+      }
+      let newUser = []
+      newUser.push(userData)
+      localStorage.setItem('user', JSON.stringify(newUser))
       localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
       setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
       return

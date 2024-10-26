@@ -7,6 +7,7 @@ import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 import { AuthContext } from "@/contextproviders/authprovider";
 import { logoutApi } from "../auth";
+import AuthButtonMobile from "./authbtnsmobile";
 
 
 const Header = () => {
@@ -71,6 +72,7 @@ const Header = () => {
                   height={30}
                   className="w-12 dark:hidden"
                 />
+                {/* Mobile logo */}
                 <Image
                   src="/images/logo/petrolage_logo.png"
                   alt="logo"
@@ -167,9 +169,17 @@ const Header = () => {
                 </nav>
               </div>
                 
-                <div className="flex items-center justify-end pr-16 lg:pr-0">
-                {isLoggedIn ?
+                {/* End items */}
+                <div className="flex items-center md:justify-end lg:justify-end pr-16 lg:pr-0">
+                  
+                {/* Auth Buttons mobile */}
+                <div className="px-4">
+                <AuthButtonMobile isLoggedIn={isLoggedIn} />
+                </div>
 
+                {/* Auth Buttons Large screen */}
+                {isLoggedIn ?
+              
                 <Link
                     href="/dashboard/dashboardpage">
                       <button className="ease-in-up shadow-btn hover:shadow-btn-hover hidden  bg-green-600 
@@ -194,6 +204,7 @@ const Header = () => {
                 </Link>
                 </div> 
                 }
+
                 
                 <div>
                   <ThemeToggler />

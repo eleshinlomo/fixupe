@@ -136,6 +136,7 @@ export const logoutApi = async ()=>{
   if(!response) throw new Error('No response from server')
    const data: any = await response.json()
     localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('user')
     deleteCookie('csrftoken')
     window.location.href = '/authpages/logoutlandingpage'
    

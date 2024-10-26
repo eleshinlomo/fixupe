@@ -27,7 +27,7 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Fixupe is an initiative of <a href='https://myafros.com' className="text-green-300">Myafros</a>.
+                  Fixupe is an initiative of <a href='https://myafros.com' target='_blank' className="text-green-300">Myafros</a>.
                 </p>
                 <div className="flex items-center">
                   <a
