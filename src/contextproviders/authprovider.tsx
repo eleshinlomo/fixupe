@@ -47,6 +47,7 @@ export const AuthProvider = ({children})=>{
       setPassword('')
       setError('')
       setLoginInitiated(true)
+      window.location.href = '/dashboard/dashboardpage'
       
     }else{
   
@@ -80,6 +81,7 @@ export const AuthProvider = ({children})=>{
       localStorage.setItem('user', JSON.stringify(newUser))
       localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
       setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
+      
       return
     }
      
