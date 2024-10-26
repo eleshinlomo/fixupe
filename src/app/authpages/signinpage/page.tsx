@@ -125,10 +125,7 @@ const SigninPage = () => {
                 <form onSubmit={handleLogin}>
                   
                   <div className="mb-8">
-                    <label
-                      htmlFor="email"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
+                    <label className="mb-3 block text-sm text-dark dark:text-white">
                       Your Email
                     </label>
                     <input
@@ -141,10 +138,7 @@ const SigninPage = () => {
                     />
                   </div>
                   <div className="mb-8">
-                    <label
-                      htmlFor="password"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
+                    <label className="mb-3 block text-sm text-dark dark:text-white">
                       Your Password
                     </label>
                     <input
@@ -158,9 +152,7 @@ const SigninPage = () => {
                   </div>
                   <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
                     <div className="mb-4 sm:mb-0">
-                      <label
-                        htmlFor="checkboxLabel"
-                        className="flex cursor-pointer select-none items-center text-sm font-medium text-body-color"
+                      <label className="flex cursor-pointer select-none items-center text-sm font-medium text-body-color"
                       >
                         <div className="relative">
                           <input
