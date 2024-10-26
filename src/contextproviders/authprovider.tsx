@@ -1,4 +1,4 @@
-import { getCsrfToken, loginApi, loginChecker } from "@/components/auth";
+import { fetchCsrfToken, getCsrfToken, loginApi, loginChecker } from "@/components/auth";
 import {useState, useEffect, useContext, FormEvent, createContext} from 'react'
 
 const initialValues = {
@@ -27,6 +27,9 @@ export const AuthProvider = ({children})=>{
   const [password, setPassword] = useState<string>('')
   const [btnText, setBtnText] = useState('Sign in')
   const [loginInitiated, setLoginInitiated] = useState(false)
+
+
+ 
 
   const login = async (e: FormEvent<HTMLFormElement>)=>{
     e.preventDefault()

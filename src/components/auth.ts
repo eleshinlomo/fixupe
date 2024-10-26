@@ -30,32 +30,43 @@ export const registerAPI = async ({payload})=>{
   return data
 }
 
+// Get csrf token from headers(if available)
+export const getCsrfToken  = ()=>{
 
+  const cookies = document.cookie.split(';');
+  for (let cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'csrftoken') return value;
+  }
+  return null;
+}
 
 
 // This fetches csrf before login
-// export const fetchCsrfToken = async () => {
-//   const response = await fetch(`${BASE_URL}/loginuser/`, {
-//     method: 'POST',
-//     mode: 'cors',
-//     credentials: 'include',  // Include cookies
-//   });
+export const fetchCsrfToken = async () => {
+  const response = await fetch(`${BASE_URL}/getcsrf/`, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',  
+  });
 
-//   if (!response.ok) {
-//     throw new Error('Failed to fetch CSRF token');
-//   }
-
-//   const csrfToken = getCsrfToken(); // Get the token from cookies after request
-//   console.log(`CSRF Token: ${csrfToken}`);
-//   return csrfToken;
-// };
+  if (!response.ok) {
+    throw new Error('Failed to fetch CSRF token');
+  }
+  
+  // Fetch csrf from headers
+  const csrfToken = getCsrfToken(); 
+  console.log(`CSRF Token: ${csrfToken}`);
+  return csrfToken;
+};
 
 
 
 // Login
 export const loginApi = async ({payload})=>{
   try{
- 
+ const csrf = await fetchCsrfToken()
+ if(!csrf) throw new Error('No csrf found')
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
   mode: 'cors',
@@ -63,6 +74,7 @@ export const loginApi = async ({payload})=>{
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
+    'X-csrftoken': csrf
 
   },
   body: JSON.stringify(payload)
@@ -77,16 +89,7 @@ export const loginApi = async ({payload})=>{
 }
 
 
-// Get csrf token (Only used once user is logged in)
-export const getCsrfToken  = ()=>{
 
-  const cookies = document.cookie.split(';');
-  for (let cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'csrftoken') return value;
-  }
-  return null;
-}
 
 
 
