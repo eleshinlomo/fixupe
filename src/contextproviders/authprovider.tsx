@@ -47,7 +47,6 @@ export const AuthProvider = ({children})=>{
       setPassword('')
       setError('')
       setLoginInitiated(true)
-      window.location.href = '/dashboard/dashboardpage'
       
     }else{
   
