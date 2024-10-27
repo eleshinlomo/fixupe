@@ -72,13 +72,11 @@ export const loginApi = async ({payload})=>{
   try{
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
-  credentials: 'include',
   mode: 'cors',
   headers: {
     
     'Accept': 'application/json',
     'Content-Type': 'application/json'
-    // 'X-CSRFToken': csrf
 
   },
   body: JSON.stringify(payload)

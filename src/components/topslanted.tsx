@@ -4,7 +4,7 @@ const TopSlanted = () => {
 
 return (
  <div>
-<div className="relative  py-32 flex text-center items-center justify-center bg-gray-900" 
+<div className="relative  py-32 flex text-center items-center justify-center dark:bg-gray-900   " 
    >
     {/* <div className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
@@ -16,10 +16,10 @@ return (
       <div className=" flex bottom flex-wrap justify-center items-center">
         <div className="text-center">
           <div className="flex flex-col justify-center px-4">
-            <h1 className="text-white font-extrabold text-4xl md:text-3xl">
+            <h1 className="dark:text-white font-extrabold text-4xl md:text-3xl">
               MANAGE, SEND CAMPAIGNS, AND ENGAGE WITH YOUR POTENTIAL USERS BEFORE LAUNCH.
                 </h1>
-            <p className="mt-4 text-lg text-green-300">
+            <p className="mt-4 text-lg text-green-800 font-extrabold">
               Explore some of the world&apos;s problems getting solved with technology.
             </p>
           </div>

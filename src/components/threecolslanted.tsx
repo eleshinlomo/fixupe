@@ -3,7 +3,7 @@ const ThreeColsSlanted = ()=> {
 
     return (
     
-    <section className="pb-4 relative block bg-gray-900">
+    <section className="pb-4 relative block dark:bg-gray-900">
     <div
       className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
       style={{ height: "80px" }}
@@ -27,7 +27,7 @@ const ThreeColsSlanted = ()=> {
     <div className="container mx-auto px-4 pt-24 pb-16">
       <div className="flex flex-wrap text-center justify-center">
         <div className="w-full lg:w-6/12 px-4">
-          <h2 className="text-4xl font-semibold text-white">
+          <h2 className="text-4xl font-semibold dark:text-white">
             Set-up a landing page for your idea in just 5 minutes
               </h2>
           <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
