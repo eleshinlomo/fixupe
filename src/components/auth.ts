@@ -45,14 +45,14 @@ export const getCsrfToken  = ()=>{
 // This fetches csrf before login
 export const fetchCsrfToken = async () => {
   const response = await fetch(`${BASE_URL}/getcsrf/`, {
-    method: 'POST',
+    method: 'GET',
     mode: 'cors',
     credentials: 'include', 
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({})
+    
   });
 
   if (!response.ok) {
