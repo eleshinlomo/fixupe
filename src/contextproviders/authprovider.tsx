@@ -1,4 +1,4 @@
-import { fetchCsrfToken, getCsrfToken, loginApi, loginChecker } from "@/components/auth";
+import { deleteCookie, fetchCsrfToken, getCsrfToken, loginApi, loginChecker } from "@/components/auth";
 import {useState, useEffect, useContext, FormEvent, createContext} from 'react'
 import { useRouter } from "next/navigation";
 
@@ -11,6 +11,7 @@ const initialValues = {
   btnText: '',
   error: '',
   login: ()=>{},
+  handleLoginChecker: ()=>{},
   setEmail: (value: string)=>{},
   setPassword: (value: string)=>{},
 }
@@ -35,6 +36,7 @@ export const AuthProvider = ({children})=>{
   const login = async ()=>{
   
     try{
+    setError('')
     setMessage('Signing in...')
     setBtnText('Signing in...')
     const payload = {
@@ -43,14 +45,19 @@ export const AuthProvider = ({children})=>{
     }
      const response = await loginApi({payload})
      if(response.ok){
-      setBtnText('Signed in')
-      setMessage('Signed in')
+      setBtnText('Waiting for login checker')
+      setMessage('Waiting for login checker')
       setPassword('')
+      setEmail('')
       setError('')
       setLoginInitiated(true)
-      
       localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
       setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
+      if(isLoggedIn)
+        {
+          await handleLoginChecker()
+        }
+      
       
       // router.push('/dashboard/dashboardpage')
 
@@ -76,8 +83,12 @@ export const AuthProvider = ({children})=>{
 
   const handleLoginChecker = async ()=>{
     
+    setMessage('Checking csrf')
     const csrf = getCsrfToken()
-    if(csrf === null) return
+    if(csrf === null) {
+      setMessage('Please login')
+      return
+    }
     setMessage('Checking authentication status')
     const response = await loginChecker()
     if(response.ok){
@@ -91,19 +102,25 @@ export const AuthProvider = ({children})=>{
       // newUser.push(userData)
       // localStorage.setItem('user', JSON.stringify(newUser))
       
-    const loginStatus = localStorage.getItem('isLoggedIn')
-    setIsLoggedIn(JSON.parse(loginStatus))
+    setIsLoggedIn(true)
       return
     }
+  
      
     setIsLoggedIn(false)
     return
     
   }
 
+  // This only persist and confirm loggedin users but will run without isLogged in the sign in function.
   useEffect(()=>{
-    handleLoginChecker()
-  }, [])
+      
+      handleLoginChecker()
+
+  
+  },[])
+
+
 
 
 
@@ -115,6 +132,7 @@ export const AuthProvider = ({children})=>{
     password,
     btnText,
     login,
+    handleLoginChecker,
     error,
     setEmail,
     setPassword,

@@ -1,5 +1,5 @@
 "use client";
-import {useContext} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import ScrollToTop from "@/components/ScrollToTop";
 import { Inter } from "next/font/google";
 import "node_modules/react-modal-video/css/modal-video.css";
@@ -24,9 +24,15 @@ const RootLayout = ({children}: RootLayoutProps)=> {
   const path = usePathname()
   const generalContext = useContext(GeneralContext)
   // const {pageName} = generalContext
+
+  // Auth
+  const authContext = useContext(AuthContext)
+  const {handleLoginChecker} = authContext
  
   const params = useParams()
   const pageParams = params.product?.toString()
+
+  
 
   return (
     <html suppressHydrationWarning lang="en">

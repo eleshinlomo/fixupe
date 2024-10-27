@@ -72,6 +72,7 @@ export const loginApi = async ({payload})=>{
   try{
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
+  credentials: 'include',
   mode: 'cors',
   headers: {
     
@@ -118,8 +119,8 @@ export const loginChecker = async ()=>{
   return data
 }
 
-// Utility to delete a cookie
-const deleteCookie = (name) => {
+// Delete a cookie
+export const deleteCookie = (name) => {
   document.cookie = `${name}=; Max-Age=0; path=/; domain=localhost; SameSite=Strict;`;
 };
 
@@ -129,7 +130,7 @@ export const logoutApi = async ()=>{
    method: 'POST',
    mode: 'cors',
    headers: {
-     'Accept': 'application/json',
+     
      'Content-Type': 'application/json',
      
    },
