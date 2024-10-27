@@ -126,8 +126,8 @@ const deleteCookie = (name) => {
 
 // Logout
 export const logoutApi = async ()=>{
-  // const csrf = getCsrfToken()
-  // if(!csrf) return 'Missing csrf'
+  const csrf = getCsrfToken()
+  if(!csrf) return 'Missing csrf'
   const response = await fetch(`${BASE_URL}/logoutuser/`, {
    method: 'POST',
    mode: 'cors',
@@ -135,7 +135,7 @@ export const logoutApi = async ()=>{
    headers: {
      'Accept': 'application/json',
      'Content-Type': 'application/json',
-    //  'X-csrftoken': csrf
+     'X-csrftoken': csrf
  
    },
    body: JSON.stringify({'message': 'Logging out'})
@@ -146,6 +146,7 @@ export const logoutApi = async ()=>{
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('user')
     deleteCookie('csrftoken')
+    deleteCookie('session')
     window.location.href = '/authpages/logoutlandingpage'
    
  }

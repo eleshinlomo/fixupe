@@ -1,5 +1,6 @@
 import { fetchCsrfToken, getCsrfToken, loginApi, loginChecker } from "@/components/auth";
 import {useState, useEffect, useContext, FormEvent, createContext} from 'react'
+import { useRouter } from "next/navigation";
 
 const initialValues = {
   user: null,
@@ -21,14 +22,14 @@ export const AuthProvider = ({children})=>{
 
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [message, setMessage] = useState<string>('')
+  const [message, setMessage] = useState<string>('Please login')
   const [error, setError] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [btnText, setBtnText] = useState('Sign in')
   const [loginInitiated, setLoginInitiated] = useState(false)
 
-
+ const router = useRouter()
  
 
   const login = async ()=>{
@@ -44,10 +45,13 @@ export const AuthProvider = ({children})=>{
      if(response.ok){
       setBtnText('Signed in')
       setEmail('Signed in')
+      setMessage('Signed in')
       setPassword('')
       setError('')
+      localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
+      setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
       setLoginInitiated(true)
-      window.location.href = '/dashboard/dashboardpage'
+      router.push('/dashboard/dashboardpage')
       
     }else{
   
@@ -64,35 +68,41 @@ export const AuthProvider = ({children})=>{
   }
   }
 
-
-  const handleLoginChecker = async ()=>{
-    const csrf = getCsrfToken()
-    if(csrf === null) return
-    const response = await loginChecker()
-    if(response.ok){
-      
-      console.log(response)
-      const userData = {
-        userid : response.message.userid,
-        username: response.message.username,
-      }
-      let newUser = []
-      newUser.push(userData)
-      localStorage.setItem('user', JSON.stringify(newUser))
-      localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
-      setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
-      
-      return
-    }
-     
-    setIsLoggedIn(false)
-    return
-    
-  }
-
   useEffect(()=>{
-    handleLoginChecker()
-  }, [loginInitiated])
+
+    const loginStatus = localStorage.getItem('isLoggedIn')
+    setIsLoggedIn(JSON.parse(loginStatus))
+  },[isLoggedIn])
+
+
+  // const handleLoginChecker = async ()=>{
+    
+  //   const csrf = getCsrfToken()
+  //   if(csrf === null) return
+  //   const response = await loginChecker()
+  //   if(response.ok){
+      
+  //     console.log(response)
+  //     const userData = {
+  //       userid : response.message.userid,
+  //       username: response.message.username,
+  //     }
+  //     let newUser = []
+  //     newUser.push(userData)
+  //     localStorage.setItem('user', JSON.stringify(newUser))
+      
+      
+  //     return
+  //   }
+     
+  //   setIsLoggedIn(false)
+  //   return
+    
+  // }
+
+  // useEffect(()=>{
+  //   handleLoginChecker()
+  // }, [loginInitiated])
 
   const values = {
     user,
