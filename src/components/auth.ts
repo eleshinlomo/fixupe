@@ -70,16 +70,16 @@ export const fetchCsrfToken = async () => {
 // Login
 export const loginApi = async ({payload})=>{
   try{
- const csrf = await fetchCsrfToken()
- if(!csrf) throw new Error('No csrf found')
+//  const csrf = await fetchCsrfToken()
+//  if(!csrf) throw new Error('No csrf found')
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
   mode: 'cors',
   credentials: 'include',
   headers: {
-    'Accept': 'application/json',
+    
     'Content-Type': 'application/json',
-    'X-CSRFToken': csrf
+    // 'X-CSRFToken': csrf
 
   },
   body: JSON.stringify(payload)
