@@ -78,7 +78,8 @@ export const loginApi = async ({payload})=>{
   credentials: 'include',
   headers: {
     
-    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
     // 'X-CSRFToken': csrf
 
   },
