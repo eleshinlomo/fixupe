@@ -8,7 +8,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' data:;
-      connect-src 'self' ${BASE_URL} https://myafrosbackend-production.up.railway.app;
+      connect-src 'self' http://localhost:8000 https://myafrosbackend-production.up.railway.app;
       font-src 'self' https://fonts.gstatic.com;
       frame-src 'none';
       object-src 'none';
@@ -35,17 +35,6 @@ const nextConfig = {
     ];
   },
 
-  async rewrites() {
-    const urls = [BASE_URL]
-    const selectedBackend = [urls][0]
-
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${selectedBackend}/api/:path*`, // Dynamic rewrite based on environment
-      },
-    ];
-  },
-};
+}
 
 module.exports = nextConfig;
