@@ -75,7 +75,7 @@ export const loginApi = async ({payload})=>{
  const response = await fetch(`${BASE_URL}/loginuser/`, {
   method: 'POST',
   mode: 'cors',
-  credentials: 'include',
+  // credentials: 'include',
   headers: {
     
     'Accept': 'application/json',
