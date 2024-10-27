@@ -8,7 +8,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' data:;
-      connect-src 'self' ${BASE_URL};
+      connect-src 'self' ${BASE_URL} https://myafrosbackend-production.up.railway.app;
       font-src 'self' https://fonts.gstatic.com;
       frame-src 'none';
       object-src 'none';
@@ -36,8 +36,8 @@ const nextConfig = {
   },
 
   async rewrites() {
-   
-    const selectedBackend = BASE_URL
+    const urls = [BASE_URL]
+    const selectedBackend = [urls][0]
 
     return [
       {
