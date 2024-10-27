@@ -44,14 +44,17 @@ export const AuthProvider = ({children})=>{
      const response = await loginApi({payload})
      if(response.ok){
       setBtnText('Signed in')
-      setEmail('Signed in')
       setMessage('Signed in')
       setPassword('')
       setError('')
+      setLoginInitiated(true)
+      
       localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
       setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
-      setLoginInitiated(true)
-      router.push('/dashboard/dashboardpage')
+      
+      // router.push('/dashboard/dashboardpage')
+
+      
       
     }else{
   
@@ -68,41 +71,41 @@ export const AuthProvider = ({children})=>{
   }
   }
 
-  useEffect(()=>{
 
+
+
+  const handleLoginChecker = async ()=>{
+    
+    const csrf = getCsrfToken()
+    if(csrf === null) return
+    setMessage('Checking authentication status')
+    const response = await loginChecker()
+    if(response.ok){
+      
+      console.log(response)
+      const userData = {
+        userid : response.message.userid,
+        username: response.message.username,
+      }
+      // let newUser = []
+      // newUser.push(userData)
+      // localStorage.setItem('user', JSON.stringify(newUser))
+      
     const loginStatus = localStorage.getItem('isLoggedIn')
     setIsLoggedIn(JSON.parse(loginStatus))
-  },[isLoggedIn])
-
-
-  // const handleLoginChecker = async ()=>{
-    
-  //   const csrf = getCsrfToken()
-  //   if(csrf === null) return
-  //   const response = await loginChecker()
-  //   if(response.ok){
-      
-  //     console.log(response)
-  //     const userData = {
-  //       userid : response.message.userid,
-  //       username: response.message.username,
-  //     }
-  //     let newUser = []
-  //     newUser.push(userData)
-  //     localStorage.setItem('user', JSON.stringify(newUser))
-      
-      
-  //     return
-  //   }
+      return
+    }
      
-  //   setIsLoggedIn(false)
-  //   return
+    setIsLoggedIn(false)
+    return
     
-  // }
+  }
 
-  // useEffect(()=>{
-  //   handleLoginChecker()
-  // }, [loginInitiated])
+  useEffect(()=>{
+    handleLoginChecker()
+  }, [])
+
+
 
   const values = {
     user,

@@ -102,13 +102,14 @@ export const loginChecker = async ()=>{
   if(!csrf) return
   const response = await fetch(`${BASE_URL}/loginchecker/`, {
     mode: 'cors',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'X-csrftoken': csrf
 
     },
-    credentials: 'include',
+    
   })
 
   if(!response) throw new Error('No response from server')

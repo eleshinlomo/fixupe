@@ -7,14 +7,19 @@ const securityHeaders = [
       default-src 'self';
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      img-src 'self' data:;
-      connect-src 'self' http://localhost:8000 https://myafrosbackend-production.up.railway.app;
+      img-src 'self' https://*.ytimg.com https://i.ytimg.com;
+      connect-src 'self' http://localhost:8000 http://localhost:8001 https://myafrosbackend-production.up.railway.app;
       font-src 'self' https://fonts.gstatic.com;
-      frame-src 'none';
-      object-src 'none';
+      frame-src 'self' youtube.com www.youtube.com;
+      object-src 'self';
     `.replace(/\s{2,}/g, ' ').trim(),
   },
+  {
+    key: 'Permissions-Policy',
+    value: 'picture-in-picture=*', // Allow Picture-in-Picture from all origins
+  },
 ];
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
