@@ -75,6 +75,7 @@ export const loginApi = async ({payload})=>{
   const csrf = JSON.stringify( await fetchCsrfTokenFromServer())
   if(!csrf) throw new Error('csrf token not found')
   try{
+ console.log('CSRF FOUND IN LOGIN', csrf)
  const response = await fetch(`${BASE_URL}/api/loginuser/`, {
   method: 'POST',
   mode: 'cors',
