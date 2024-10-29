@@ -60,17 +60,20 @@ export const fetchCsrfToken = async () => {
   }
   
   // Fetch csrf from headers
-  const csrfToken = getCsrfToken(); 
-  console.log(`CSRF Token: ${csrfToken}`);
-  return csrfToken;
+  if(response.ok){
+    const csrfToken = getCsrfToken()
+    console.log(`CSRF Token: ${csrfToken}`);
+    return csrfToken;
+  }; 
+  
 };
 
 
 
 // Login
 export const loginApi = async ({payload})=>{
-  const csrf = await fetchCsrfToken()
-  if(!csrf) return 'csrf token not found'
+  // const csrf = await fetchCsrfToken()
+  // if(!csrf) return 'csrf token not found'
   try{
  const response = await fetch(`${BASE_URL}/api/loginuser/`, {
   method: 'POST',
@@ -80,7 +83,7 @@ export const loginApi = async ({payload})=>{
     
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'X-csrfToken': csrf
+    // 'X-csrfToken': csrf
     
 
   },
