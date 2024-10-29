@@ -80,6 +80,7 @@ export const loginApi = async ({payload})=>{
     
     'Accept': 'application/json',
     'Content-Type': 'application/json',
+    'X-csrfToken': csrf
     
 
   },
@@ -105,7 +106,6 @@ export const loginChecker = async ()=>{
   if(!csrf) return
   const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
-    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -128,12 +128,15 @@ export const deleteCookie = (name) => {
 
 // Logout
 export const logoutApi = async ()=>{
+  const csrf = await fetchCsrfToken()
+  if(!csrf) return 'csrf token not found'
   const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
    mode: 'cors',
    headers: {
      
      'Content-Type': 'application/json',
+     'X-csrfToken': csrf
      
    },
    body: JSON.stringify({'message': 'Logging out'})
@@ -146,6 +149,7 @@ export const logoutApi = async ()=>{
     deleteCookie('csrftoken')
     deleteCookie('session')
     window.location.href = '/authpages/logoutlandingpage'
+    return
    
  }
  
