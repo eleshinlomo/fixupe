@@ -1,4 +1,4 @@
-import { deleteCookie, fetchCsrfToken, getCsrfToken, loginApi, loginChecker } from "@/components/auth";
+import { deleteCookie, fetchCsrfTokenFromServer, getCsrfTokenFromHeader, loginApi, loginChecker } from "@/components/auth";
 import {useState, useEffect, useContext, FormEvent, createContext} from 'react'
 import { useRouter } from "next/navigation";
 
@@ -66,7 +66,7 @@ export const AuthProvider = ({children})=>{
     }else{
   
       setError(response.error)
-      console.log(response.error)
+      console.error(response.error)
       setBtnText('Sign in')
       return
   
@@ -84,8 +84,8 @@ export const AuthProvider = ({children})=>{
   const handleLoginChecker = async ()=>{
     
     setMessage('Checking csrf')
-    const csrf = getCsrfToken()
-    if(csrf === null) {
+    const csrf = getCsrfTokenFromHeader()
+    if(!csrf) {
       setMessage('Please login')
       return
     }

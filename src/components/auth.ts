@@ -31,19 +31,20 @@ export const registerAPI = async ({payload})=>{
 }
 
 // Get csrf token from headers(if available)
-export const getCsrfToken  = ()=>{
+export const getCsrfTokenFromHeader  = ()=>{
 
   const cookies = document.cookie.split(';');
-  for (let cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'csrftoken') return value;
-  }
-  return null;
+  document.cookie
+    .split('; ')
+    .find((cookie) => cookie.startsWith('csrftoken='))
+    ?.split('=')[1];
+    if(cookies === null) throw new Error('Csrf not found in headers')
+  return  cookies;
 }
 
 
 // This fetches csrf before login
-export const fetchCsrfToken = async () => {
+export const fetchCsrfTokenFromServer = async () => {
   const response = await fetch(`${BASE_URL}/api/getcsrf/`, {
     method: 'GET',
     mode: 'cors',
@@ -55,10 +56,7 @@ export const fetchCsrfToken = async () => {
   }
 
   // Extract CSRF token from cookies
-  const csrfToken = document.cookie
-    .split('; ')
-    .find((cookie) => cookie.startsWith('csrftoken='))
-    ?.split('=')[1];
+  const csrfToken = getCsrfTokenFromHeader()
 
   if (!csrfToken) {
     throw new Error('CSRF token not found in cookies');
@@ -74,7 +72,7 @@ export const fetchCsrfToken = async () => {
 
 // Login
 export const loginApi = async ({payload})=>{
-  const csrf = await fetchCsrfToken()
+  const csrf = JSON.stringify( await fetchCsrfTokenFromServer())
   if(!csrf) throw new Error('csrf token not found')
   try{
  const response = await fetch(`${BASE_URL}/api/loginuser/`, {
@@ -107,7 +105,7 @@ export const loginApi = async ({payload})=>{
 
 // Login Checker
 export const loginChecker = async ()=>{
-  const csrf = getCsrfToken()
+  const csrf = JSON.stringify(getCsrfTokenFromHeader())
   if(!csrf) return
   const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
@@ -133,7 +131,7 @@ export const deleteCookie = (cookieName) => {
 
 // Logout
 export const logoutApi = async ()=>{
-  const csrf = await fetchCsrfToken()
+  const csrf = JSON.stringify(getCsrfTokenFromHeader())
   if(!csrf) return 'csrf token not found'
   const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
