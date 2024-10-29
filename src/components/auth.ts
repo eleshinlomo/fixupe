@@ -122,8 +122,8 @@ export const loginChecker = async ()=>{
 }
 
 // Delete a cookie
-export const deleteCookie = (name) => {
-  document.cookie = `${name}=; Max-Age=0; path=/; domain=localhost; SameSite=Strict;`;
+export const deleteCookie = (cookieName) => {
+  document.cookie = `${cookieName}=; Max-Age=0; path=/; domain=localhost; SameSite=Strict;`;
 };
 
 // Logout
