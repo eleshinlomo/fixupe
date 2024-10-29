@@ -108,6 +108,7 @@ export const loginApi = async ({payload})=>{
 export const loginChecker = async ()=>{
   const csrf = JSON.stringify(getCsrfTokenFromHeader())
   if(!csrf) return
+  console.log('CSRF FOUND IN LOGIN CHECKER', csrf)
   const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
     headers: {
