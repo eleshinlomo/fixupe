@@ -47,33 +47,35 @@ export const fetchCsrfToken = async () => {
   const response = await fetch(`${BASE_URL}/api/getcsrf/`, {
     method: 'GET',
     mode: 'cors',
-    credentials: 'include', 
+    credentials: 'include',  // Ensure cookies are included
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    
   });
 
   if (!response.ok) {
     throw new Error('Failed to fetch CSRF token');
   }
-  
-  // Fetch csrf from headers
-  if(response.ok){
-    const csrfToken = getCsrfToken()
-    console.log(`CSRF Token: ${csrfToken}`);
-    return csrfToken;
-  }; 
-  
+
+  // Try to extract the CSRF token from the headers
+  const csrfToken = response.headers.get('csrftoken');  // Replace with the correct header name
+  console.log(`CSRF Token from Header: ${csrfToken}`);
+
+  if (!csrfToken) {
+    throw new Error('CSRF token not found in headers');
+  }
+
+  return csrfToken;
 };
+
 
 
 
 // Login
 export const loginApi = async ({payload})=>{
   const csrf = await fetchCsrfToken()
-  if(!csrf) return 'csrf token not found'
+  if(!csrf) throw new Error('csrf token not found')
   try{
  const response = await fetch(`${BASE_URL}/api/loginuser/`, {
   method: 'POST',
