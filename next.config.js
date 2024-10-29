@@ -1,4 +1,5 @@
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV
 
 const securityHeaders = [
   {
@@ -8,7 +9,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https://*.ytimg.com https://i.ytimg.com;
-      connect-src 'self' http://localhost:8000 http://localhost:8001 https://myafrosbackend-production.up.railway.app;
+      connect-src 'self' ${BASE_URL};
       font-src 'self' https://fonts.gstatic.com;
       frame-src 'self' youtube.com www.youtube.com;
       object-src 'self';
@@ -39,6 +40,15 @@ const nextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_BASE_URL}/api/:path*` // Proxy to Backend
+      }
+    ]
+  }
 
 }
 

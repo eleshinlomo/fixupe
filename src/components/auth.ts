@@ -18,7 +18,7 @@ export const passMatch = ({password, repassword})=>{
 
 export const registerAPI = async ({payload})=>{
 
-  const response = await fetch(`${BASE_URL}/registeruser/`, {
+  const response = await fetch(`${BASE_URL}/api/registeruser/`, {
     method: 'POST',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},
@@ -44,7 +44,7 @@ export const getCsrfToken  = ()=>{
 
 // This fetches csrf before login
 export const fetchCsrfToken = async () => {
-  const response = await fetch(`${BASE_URL}/getcsrf/`, {
+  const response = await fetch(`${BASE_URL}/api/getcsrf/`, {
     method: 'GET',
     mode: 'cors',
     credentials: 'include', 
@@ -69,14 +69,18 @@ export const fetchCsrfToken = async () => {
 
 // Login
 export const loginApi = async ({payload})=>{
+  const csrf = await fetchCsrfToken()
+  if(!csrf) return 'csrf token not found'
   try{
- const response = await fetch(`${BASE_URL}/loginuser/`, {
+ const response = await fetch(`${BASE_URL}/api/loginuser/`, {
   method: 'POST',
   mode: 'cors',
+  credentials: 'include',
   headers: {
     
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    
 
   },
   body: JSON.stringify(payload)
@@ -99,7 +103,7 @@ export const loginApi = async ({payload})=>{
 export const loginChecker = async ()=>{
   const csrf = getCsrfToken()
   if(!csrf) return
-  const response = await fetch(`${BASE_URL}/loginchecker/`, {
+  const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
     credentials: 'include',
     headers: {
@@ -124,7 +128,7 @@ export const deleteCookie = (name) => {
 
 // Logout
 export const logoutApi = async ()=>{
-  const response = await fetch(`${BASE_URL}/logoutuser/`, {
+  const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
    mode: 'cors',
    headers: {
