@@ -31,16 +31,22 @@ export const registerAPI = async ({payload})=>{
 }
 
 // Get csrf token from headers(if available)
-export const getCsrfTokenFromHeader  = ()=>{
-
-  const cookies = document.cookie.split(';');
-  document.cookie
+// Get csrf token from cookies (if available)
+export const getCsrfTokenFromHeader = () => {
+  const csrfToken = document.cookie
     .split('; ')
     .find((cookie) => cookie.startsWith('csrftoken='))
-    ?.split('=')[1];
-    if(cookies === null) throw new Error('Csrf not found in headers')
-  return  cookies;
-}
+    ?.split('=')[1];  // Extract the token value after '='
+
+  if (!csrfToken) {
+    console.error('CSRF token not found in cookies');
+    return ''
+
+  }
+
+  return csrfToken;
+};
+
 
 
 // This fetches csrf before login
@@ -111,6 +117,7 @@ export const loginChecker = async ()=>{
   console.log('CSRF FOUND IN LOGIN CHECKER', csrf)
   const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
+    // credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',

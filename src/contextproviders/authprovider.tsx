@@ -82,13 +82,14 @@ export const AuthProvider = ({children})=>{
 
 
   const handleLoginChecker = async ()=>{
-    
+    if(isLoggedIn && isLoggedIn === true) return
     setMessage('Checking csrf')
     const csrf = getCsrfTokenFromHeader()
-    if(!csrf) {
+    if(!csrf || csrf === '') {
       setMessage('Please login')
       return
     }
+    console.log('CRSF TOKEN IN LOGIN CHECKER', csrf)
     setMessage('Checking authentication status')
     const response = await loginChecker()
     if(response.ok){
@@ -107,7 +108,6 @@ export const AuthProvider = ({children})=>{
     }
   
      
-    setIsLoggedIn(false)
     return
     
   }
