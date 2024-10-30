@@ -32,14 +32,14 @@ const nextConfig = {
     ],
   },
 
-  async headers() {
-    return [
-      {
-        source: '/(.*)', // Apply headers to all routes
-        headers: securityHeaders,
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)', 
+  //       headers: securityHeaders,
+  //     },
+  //   ];
+  // },
 
   async rewrites() {
     return [
