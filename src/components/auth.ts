@@ -44,6 +44,7 @@ export const getCsrfTokenFromHeader = () => {
 
   }
 
+  localStorage.setItem('csrftoken', csrfToken)
   return csrfToken;
 };
 
@@ -54,21 +55,16 @@ export const fetchCsrfTokenFromServer = async () => {
   const response = await fetch(`${BASE_URL}/api/getcsrf/`, {
     method: 'GET',
     mode: 'cors',
-    credentials: 'include',  // Important to include cookies
+    
   });
 
   if (!response.ok) {
     throw new Error('Failed to fetch CSRF token');
   }
 
-  // Extract CSRF token from cookies
-  const csrfToken = getCsrfTokenFromHeader()
-
-  if (!csrfToken) {
-    throw new Error('CSRF token not found in cookies');
-  }
-
-  console.log(`CSRF Token: ${csrfToken}`);
+  const csrfToken = await response.json()
+  localStorage.setItem('csrftoken', csrfToken.csrftoken)
+  console.log('CSRF Token', csrfToken.csrftoken);
   return csrfToken;
 };
 
@@ -78,10 +74,11 @@ export const fetchCsrfTokenFromServer = async () => {
 
 // Login
 export const loginApi = async ({payload})=>{
-  const csrf = JSON.stringify( await fetchCsrfTokenFromServer())
+  console.log('LOGGING IN...')
+  const csrf = await fetchCsrfTokenFromServer()
   if(!csrf) throw new Error('csrf token not found')
   try{
- console.log('CSRF FOUND IN LOGIN', csrf)
+ console.log('CSRF FOUND IN LOGIN', csrf.csrftoken)
  const response = await fetch(`${BASE_URL}/api/loginuser/`, {
   method: 'POST',
   mode: 'cors',
@@ -112,12 +109,12 @@ export const loginApi = async ({payload})=>{
 
 // Login Checker
 export const loginChecker = async ()=>{
-  const csrf = JSON.stringify(getCsrfTokenFromHeader())
-  if(!csrf) return
+  const csrf = localStorage.getItem('csrftoken')
+  if(!csrf || csrf === '') return
   console.log('CSRF FOUND IN LOGIN CHECKER', csrf)
   const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
     mode: 'cors',
-    // credentials: 'include',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -140,7 +137,7 @@ export const deleteCookie = (cookieName) => {
 
 // Logout
 export const logoutApi = async ()=>{
-  const csrf = JSON.stringify(getCsrfTokenFromHeader())
+  const csrf = localStorage.getItem('csrftoken')
   if(!csrf) return 'csrf token not found'
   const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
@@ -158,6 +155,7 @@ export const logoutApi = async ()=>{
    const data: any = await response.json()
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('user')
+    localStorage.removeItem('csrftoken')
     deleteCookie('csrftoken')
     deleteCookie('session')
     window.location.href = '/authpages/logoutlandingpage'

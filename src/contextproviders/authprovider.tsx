@@ -53,11 +53,10 @@ export const AuthProvider = ({children})=>{
       setLoginInitiated(true)
       localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
       setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')))
-      if(isLoggedIn)
-        {
-          await handleLoginChecker()
-        }
-      
+      // Referesh the csrftoken in the localStorage with the new one
+      getCsrfTokenFromHeader()
+      // Referesh the loginchecker with the new csrftoken 
+      handleLoginChecker()
       
       // router.push('/dashboard/dashboardpage')
 
@@ -83,17 +82,15 @@ export const AuthProvider = ({children})=>{
 
   const handleLoginChecker = async ()=>{
     if(isLoggedIn && isLoggedIn === true) return
-    setMessage('Checking csrf')
-    const csrf = getCsrfTokenFromHeader()
-    if(!csrf || csrf === '') {
-      setMessage('Please login')
+    
+    setMessage('Checking authentication status')
+    const response: any = await loginChecker()
+    if(!response) {
+      setMessage('Sign in')
       return
     }
-    console.log('CRSF TOKEN IN LOGIN CHECKER', csrf)
-    setMessage('Checking authentication status')
-    const response = await loginChecker()
+
     if(response.ok){
-      
       console.log(response)
       const userData = {
         userid : response.message.userid,
