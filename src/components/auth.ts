@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 
 
 export interface LoginProps {
@@ -74,6 +75,7 @@ export const fetchCsrfTokenFromServer = async () => {
 
 // Login
 export const loginApi = async ({payload})=>{
+
   console.log('LOGGING IN...')
   const csrf = await fetchCsrfTokenFromServer()
   if(!csrf) throw new Error('csrf token not found')
@@ -118,7 +120,7 @@ export const loginChecker = async ()=>{
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'X-csrftoken': csrf
+      'X-CSRFTOKEN': csrf
 
     },
     
@@ -138,9 +140,11 @@ export const deleteCookie = (cookieName) => {
 // Logout
 export const logoutApi = async ()=>{
   const csrf = localStorage.getItem('csrftoken')
+  console.log('LOGOUT CSRF', csrf)
   if(!csrf) return 'csrf token not found'
   const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
+   credentials: 'include',
    mode: 'cors',
    headers: {
      

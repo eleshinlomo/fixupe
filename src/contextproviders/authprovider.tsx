@@ -10,7 +10,7 @@ const initialValues = {
   password: '',
   btnText: '',
   error: '',
-  login: ()=>{},
+  login: (e: FormEvent<HTMLFormElement>)=>{},
   handleLoginChecker: ()=>{},
   setEmail: (value: string)=>{},
   setPassword: (value: string)=>{},
@@ -33,8 +33,8 @@ export const AuthProvider = ({children})=>{
  const router = useRouter()
  
 
-  const login = async ()=>{
-  
+  const login = async (e: FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
     try{
     setError('')
     setMessage('Signing in...')
