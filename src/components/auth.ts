@@ -144,7 +144,6 @@ export const logoutApi = async ()=>{
   if(!csrf) return 'csrf token not found'
   const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
    method: 'POST',
-   credentials: 'include',
    mode: 'cors',
    headers: {
      

@@ -65,21 +65,11 @@ const Header = () => {
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
-                <Image
-                  src="/images/logo/petrolage_logo.png"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-12 dark:hidden"
-                />
+               
                 {/* Mobile logo */}
-                <Image
-                  src="/images/logo/petrolage_logo.png"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-12 dark:block"
-                />
+                <h1 className="gradient-title font-extrabold text-3xl md:text-3xl lg:text-5xl tracking-tighter md:px-6 text-center py-8 animate-pulse">
+                   {'FP'}
+                  </h1>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
