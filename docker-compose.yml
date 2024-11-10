@@ -12,14 +12,15 @@ services:
     volumes:
      - .:/app
      - ./node_modules:/app/node_modules
+     - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
 
-  nginx:
-    build: 
-     context: .
-     dockerfile: ./etc/nginx/Dockerfile.nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - fixupe
-    volumes:
-      - ./etc/nginx/default.conf:/etc/nginx/nginx.conf
+  # nginx:
+  #   build: 
+  #    context: .
+  #    dockerfile: ./etc/nginx/Dockerfile.nginx
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - fixupe
+  #   volumes:
+  #     - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
