@@ -2,13 +2,12 @@
 import ScrollUp from "@/components/Common/ScrollUp";
 import Hero from "@/components/Hero";
 import Video from "@/components/Video";
-import { Metadata } from "next";
 import TestimonialPage from "@/components/Testimonials";
-import Brands from "@/components/Brands";
 import TopProjects from "@/components/topprojects";
 import TopSlanted from "@/components/topslanted";
 import ThreeColsSlanted from "@/components/threecolslanted";
 import GetStartedButton from "@/components/getstartedbtn";
+import ImageSliderPage from "@/app/imagesliderpage/page";
 
 
 
@@ -21,9 +20,9 @@ export default function Home() {
 
   return (
     <>
-      
+      <div className="overflow-hidden">
       <Hero />
-      <Brands />
+      <ImageSliderPage />
       <TopSlanted />
       <ThreeColsSlanted />
       <TopProjects />
@@ -41,6 +40,8 @@ export default function Home() {
       
      
       <ScrollUp />
+
+      </div>
       
     </>
   );

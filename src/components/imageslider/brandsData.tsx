@@ -1,48 +1,51 @@
 import { Brand } from "@/types/brand";
 
-const brandsData: Brand[] = [
+interface BrandProps {
+    id: number;
+    name: string;
+    href: string;
+    image: string;
+    imageLight?: string;
+  
+}
+
+export const brandsData: BrandProps[] = [
   {
     id: 6,
-    name: "Chevron",
+    name: "LinkedIn",
     href: "/",
     image: "/images/brands/formbold.svg",
     imageLight: "/images/brands/formbold-light.svg",
   },
   {
     id: 1,
-    name: "Shell",
+    name: "CNN",
     href: "/",
     image: "/images/brands/uideck.svg",
     imageLight: "/images/brands/uideck-light.svg",
   },
   {
     id: 2,
-    name: "Bell Oil",
+    name: "Facebook",
     href: "https://tailgrids.com",
-    image: "/images/brands/tailgrids.svg",
+    image: "/images/logo/petrolage_logo.png",
     imageLight: "/images/brands/tailgrids-light.svg",
   },
   {
     id: 3,
-    name: "Seplat",
+    name: "Instagram",
     href: "https://lineicons.com",
-    image: "/images/brands/lineicons.svg",
-    imageLight: "/images/brands/lineicons-light.svg",
+    image: "/images/logo/logo.svg",
+    imageLight: "/images/logo/logo.svg",
   },
   {
     id: 4,
-    name: "Lekoil",
+    name: "TikTok",
     href: "https://tailadmin.com",
     image: "/images/brands/tailadmin.svg",
     imageLight: "/images/brands/tailadmin-light.svg",
   },
-  {
-    id: 5,
-    name: "DPR",
-    href: "https://plainadmin.com",
-    image: "/images/brands/plainadmin.svg",
-    imageLight: "/images/brands/plainadmin-light.svg",
-  },
+  
 ];
 
 export default brandsData;

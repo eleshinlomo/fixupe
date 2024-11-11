@@ -13,7 +13,7 @@ import ProductContact from '../(productform)';
 import ProductVideoPage from '../productvideopage';
 import PageNotFound from '../pagenotfound';
 import ProductTestimonialPage from '../(producttestimonials)';
-import Brands from '@/components/Brands';
+import Brands from '@/app/imagesliderpage/page';
 
 
 // export const metadata: Metadata = {
