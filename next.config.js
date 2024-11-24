@@ -9,7 +9,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' https://*.ytimg.com https://i.ytimg.com;
-      connect-src 'self' ${BASE_URL};
+      connect-src 'self' ;
       font-src 'self' https://fonts.gstatic.com;
       frame-src 'self' youtube.com www.youtube.com;
       object-src 'self';
@@ -41,14 +41,7 @@ const nextConfig = {
   //   ];
   // },
 
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_BASE_URL}/api/:path*` // Proxy to Backend
-      }
-    ]
-  }
+
 
 }
 

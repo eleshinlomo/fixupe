@@ -19,7 +19,7 @@ export const passMatch = ({password, repassword})=>{
 
 export const registerAPI = async ({payload})=>{
 
-  const response = await fetch(`${BASE_URL}/api/registeruser/`, {
+  const response = await fetch("/api/registeruser/", {
     method: 'POST',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},
@@ -53,7 +53,7 @@ export const getCsrfTokenFromHeader = () => {
 
 // This fetches csrf before login
 export const fetchCsrfTokenFromServer = async () => {
-  const response = await fetch(`${BASE_URL}/api/getcsrf/`, {
+  const response = await fetch(`/api/getcsrf/`, {
     method: 'GET',
     mode: 'cors',
     
@@ -80,8 +80,8 @@ export const loginApi = async ({payload})=>{
   const csrf = await fetchCsrfTokenFromServer()
   if(!csrf) throw new Error('csrf token not found')
   try{
- console.log('CSRF FOUND IN LOGIN', csrf.csrftoken)
- const response = await fetch(`${BASE_URL}/api/loginuser/`, {
+ console.log('CSRF FOUND IN LOGIN', csrf)
+ const response = await fetch(`/api/loginuser/`, {
   method: 'POST',
   mode: 'cors',
   credentials: 'include',
@@ -114,7 +114,7 @@ export const loginChecker = async ()=>{
   const csrf = getCsrfTokenFromHeader()
   if(!csrf || csrf === '') return
   console.log('CSRF FOUND IN LOGIN CHECKER', csrf)
-  const response = await fetch(`${BASE_URL}/api/loginchecker/`, {
+  const response = await fetch(`/api/loginchecker/`, {
     mode: 'cors',
     credentials: 'include',
     headers: {
@@ -142,7 +142,7 @@ export const logoutApi = async ()=>{
   const csrf = localStorage.getItem('csrftoken')
   console.log('LOGOUT CSRF', csrf)
   if(!csrf) return 'csrf token not found'
-  const response = await fetch(`${BASE_URL}/api/logoutuser/`, {
+  const response = await fetch(`/api/logoutuser/`, {
    method: 'POST',
    mode: 'cors',
    headers: {
