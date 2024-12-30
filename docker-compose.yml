@@ -1,0 +1,15 @@
+services:
+
+  myafros:
+    build:
+      context: .
+      dockerfile: ./fontend/Dockerfile.myafrosfront
+    container_name: myafros
+    restart: always
+    ports:
+      - '3000:3000'
+    env_file: 
+     - .env
+    volumes:
+     - .:/app
+     - ./node_modules:/app/node_modules
