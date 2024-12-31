@@ -6,7 +6,7 @@ import Link from 'next/link'
 const PrivacyPage = () => {
   return (
     <div className="container mx-auto p-8 bg-white text-black">
-        <Button className="my-3" asChild>
+        <Button className="my-3 bg-blue-500 hover:bg-blue-500 text-white rounded-2xl" asChild>
           <Link href='/'>Back to Home</Link>
         </Button>
       <h1 className="text-3xl font-semibold mb-4">Privacy Policy</h1>
@@ -27,7 +27,7 @@ const PrivacyPage = () => {
 
       <h2 className="text-2xl font-semibold mb-4">3. How We Use Your Information</h2>
       <p className="mb-4">
-        We use the collected information to:
+        We use the collected information to: </p>
         <ul className="list-disc list-inside mb-2">
           <li>Deliver and personalize our services.</li>
           <li>Communicate with you.</li>
@@ -35,7 +35,7 @@ const PrivacyPage = () => {
           <li>Ensure security and investigate violations.</li>
           <li>Comply with legal requirements.</li>
         </ul>
-      </p>
+     
 
       <h2 className="text-2xl font-semibold mb-4">4. Data Security</h2>
       <p className="mb-4">
@@ -70,7 +70,7 @@ const PrivacyPage = () => {
         support@myafros.com
       </p>
 
-      <Button className="my-3" asChild>
+      <Button className="my-3 bg-blue-500 hover:bg-blue-500 text-white rounded-2xl" asChild>
           <Link href='/'>Back to Home</Link>
         </Button>
     </div>

@@ -63,7 +63,7 @@ a start-up, explore diverse range of tools offering the best solutions for busin
 className="  bg-blue-500 rounded-full  w-full" 
   >VOICE RECORDER</Button>
   </a>
-<a href='https://imgbot.myafros.com/'>
+<a href={`${MYAFROSAI_URL}/genai/image/texttoimgpage`}>
 <Button variant='outline' size='sm' className=" bg-blue-500 rounded-full  w-full  ">
     GENERATE IMAGE
 </Button>

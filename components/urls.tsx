@@ -10,3 +10,5 @@ return company
 }
 }
 
+export const MYAFROSAI_URL = process.env.NEXT_PUBLIC_MYAFROSAI_HOME
+

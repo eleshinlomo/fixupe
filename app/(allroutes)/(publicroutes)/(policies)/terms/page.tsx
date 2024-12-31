@@ -5,7 +5,7 @@ const TermsPage = () => {
     return (
       <div className="container mx-auto p-8 bg-white text-black ">
 
-      <Button className="my-3" asChild>
+      <Button className="my-3 bg-blue-500 hover:bg-blue-500 text-white rounded-2xl" asChild>
           <Link href='/'>Back to Home</Link>
         </Button>
 
@@ -54,7 +54,7 @@ const TermsPage = () => {
         For any questions or concerns regarding these Terms of Service, please contact us at:
         support@myafros.com
       </p>
-      <Button className="my-3" asChild>
+      <Button className="my-3 bg-blue-500 hover:bg-blue-500 text-white rounded-2xl" asChild>
           <Link href='/'>Back to Home</Link>
         </Button>
     </div>

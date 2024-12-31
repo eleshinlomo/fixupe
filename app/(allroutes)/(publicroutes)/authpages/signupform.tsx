@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState, useEffect} from 'react'
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { Button } from '@/components/ui/button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -29,7 +29,7 @@ const SignUpForm = () => {
   const [company, setCompany] = useState<string>('')
   const [username, setUsername] = useState<string>('')
   const [usersource, setUsersource] = useState<string>('fixupe')
-  const [message, setMessage] = useState<string | any>('Sign up with Email')
+  const [message, setMessage] = useState<string | any>('Sign up')
   const [isSiginingIn, setIsSigningIn] = useState(false)
 
   const router = useRouter()
@@ -43,8 +43,13 @@ const SignUpForm = () => {
   
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
-    try{
     e.preventDefault()
+    if(username === '' || email === '' || password === 'company' || usersource === ''){
+      setMessage('Field cannot be empty')
+      return
+    }
+    try{
+    
     setIsSigningIn(true)
     setMessage('Registering user...')
     const response: any = await registerUserWithEmail(payload)
@@ -84,7 +89,7 @@ const SignUpForm = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h5" variant="h5" className='text-center text-sm font-extrabold'>
+          <Typography component="h5" variant="h5" className='text-center text-xl font-extrabold text-blue-300'>
             {message}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate  className='grid place-items-center gap-2 mt-2 '>
@@ -100,7 +105,7 @@ const SignUpForm = () => {
               className='m-0 w-full border border-black rounded-2xl px-4 py-2'
             />
            <input
-              required
+              
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
               name="email"
@@ -108,6 +113,7 @@ const SignUpForm = () => {
               autoComplete="email"
               autoFocus
               className='m-0 w-full border border-black rounded-2xl px-4 py-2'
+              required
             />
           <input
               required
@@ -135,12 +141,9 @@ const SignUpForm = () => {
             />
             <Button
               type="submit"
-              fullWidth
-              variant="contained"
-              style={{ marginTop: 3, marginBottom: 2, backgroundColor: 'blue' }}
-              className='rounded-2xl'
+              className='rounded-2xl bg-blue-500 hover:bg-blue-500'
             >
-              Sign up
+              SIGN UP
             </Button>
             <Grid container>
               <Grid item>

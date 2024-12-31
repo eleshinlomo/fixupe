@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState, useEffect} from 'react'
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { Button } from '@/components/ui/button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -13,7 +13,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Footer from '@/components/footer';
 import { emailLogin } from '@/components/auth';
 import { useRouter } from 'next/navigation';
 
@@ -37,8 +36,14 @@ const SignInForm = () => {
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
-    try{
     e.preventDefault()
+    if(email === '' || password === 'company'){
+      setMessage('Field cannot be empty')
+      return
+    }
+
+    try{
+    
     setIsSigningIn(true)
     setMessage('Signing in...')
     const response: any = await emailLogin(payload)
@@ -75,7 +80,7 @@ const SignInForm = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography  className={`text-center text-sm font-extrabold`} >
+          <Typography  className={`text-center text-xl font-extrabold text-blue-300`} >
             {message}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate className='grid place-items-center gap-3 mt-3'>
@@ -105,12 +110,12 @@ const SignInForm = () => {
             />
             <Button
               type="submit"
-              fullWidth
-              variant="contained"
-              style={{ marginTop: 3, marginBottom: 2, backgroundColor: 'error' }}
-              className='rounded-2xl'
+              // fullWidth
+              // variant="contained"
+              // style={{ marginTop: 3, marginBottom: 2, backgroundColor: 'error' }}
+              className='rounded-2xl bg-blue-500 hover:bg-blue-500'
             >
-              Sign In
+              SIGN IN
             </Button>
             <Grid container className='gap-2'>
               <Grid item xs>
