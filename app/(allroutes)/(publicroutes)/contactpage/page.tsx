@@ -46,7 +46,7 @@ catch(err: any){
 
     <div className=''>
       <div className=' flex flex-col justify-center 
-      items-center text-center px-4'>
+      items-center text-center px-4 '>
 
         <p className='mt-16 font-extrabold px-4'>Send a message to support</p>
           

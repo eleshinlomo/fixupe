@@ -6,7 +6,7 @@ const AboutPage = () => {
 
     <div>
 
-    <div className='px-4 pt-8'>
+    <div className='px-4 pt-8 bg-white text-black'>
 
         <div className='flex flex-col gap-2 pb-3'>
         <h3 className='font-extrabold'>About Fixupe</h3>
