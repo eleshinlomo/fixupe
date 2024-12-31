@@ -151,7 +151,7 @@ const Footer = ()=>{
 
           {/* Copyrights note */}
           <div className="text-sm text-gray-600 mr-4">
-            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2024.</div>
+            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2025.</div>
 
         </div>
 
