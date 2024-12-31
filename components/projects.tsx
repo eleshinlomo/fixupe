@@ -1,3 +1,5 @@
+import { MYAFROSAI_URL } from "./urls"
+
 export default function Projects() {
     return (
       <section className="relative ">
@@ -73,7 +75,7 @@ export default function Projects() {
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">ARTIFICIAL INTELLIGENCE</h4>
                 <p className=" text-center">Use our AI solution to generate images for your projects.</p>
-                <a href='/' target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>
+                <a href={MYAFROSAI_URL} target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>
                   Visit website</button></a>
               </div>
   
