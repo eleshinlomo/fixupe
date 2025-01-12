@@ -6,12 +6,12 @@ const AboutPage = () => {
 
     <div>
 
-    <div className='px-4 pt-8 bg-white text-black'>
+    <div className='px-8 pt-8 bg-white text-black'>
 
         <div className='flex flex-col gap-2 pb-3'>
-        <h3 className='font-extrabold'>About Fixupe</h3>
+        <h3 className='font-extrabold'>About MyAfros</h3>
         <p>
-        At Myafros, our mission is clear, to make AI accessible, 
+        At Myafros, our mission is clear, to make Software and AI accessible, 
         intuitive, and transformative for businesses worldwide. 
         Whether you&apos;re at the helm of a multinational enterprise 
         or steering the course of a dynamic start-up,
