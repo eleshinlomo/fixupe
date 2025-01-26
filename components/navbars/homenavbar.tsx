@@ -9,7 +9,7 @@ import Logo from '@/public/logos/logo.png'
 import { Button } from '../ui/button';
 import { loginChecker, userLogout } from '../auth';
 import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinlandingpage';
-
+import { navigation } from './navigation';
 
 
 interface HomeNavbarProps {
@@ -20,34 +20,16 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
 
   const [isChecking, setIsChecking] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('Sign in')
+  const [links, setLinks] = useState<Array<any>>([])
 
 
-  
+  useEffect(()=>{
+    if(navigation.length > 0){
+      setLinks(navigation)
+    }
+  }, [])
 
-  const navigation = [
-    {name: "Home",
-     link: "/",
-     target: ''
-    },
-    {name: "About",
-     link: '/aboutpage',
-     target: ''
-    },
-    {name: "Contact",
-     link: '/contactpage',
-     target: ''
-    },
-    {name: "AI",
-      link: 'https://ai.myafros.com',
-      target: '_blank'
-     },
-    {name: "Blog",
-      link: 'https://blog.myafros.com',
-       target: '_blank'
-     },
-    
-    
-  ];
+ 
 
   return (
     <div className="w-full bg-black/80 text-white">
@@ -96,8 +78,9 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
+                  
                   <>
-                    {navigation.map((item, index) => (
+                    {links.map((item, index) => (
                       <a key={index} href={item.link}  className="w-full px-4 py-2 -ml-4  rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                           {item.name}
                       </a>
@@ -122,7 +105,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
         {/* menu  */}
         <div className="hidden  text-center lg:flex lg:items-center">
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-            {navigation.map((menu, index) => (
+            {links.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
                 <Link href={menu.link} target={menu.target}  className="inline-block  px-4 py-2 text-lg font-normal no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
                     {menu.name}

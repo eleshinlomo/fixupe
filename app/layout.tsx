@@ -19,8 +19,8 @@ interface RootLayoutProps {
 
 
 export const metadata: Metadata = {
-  title: 'Home | Fixupe',
-  description: 'Fixupe is a platform that provides AI Tools for task completion',
+  title: 'Home | MyAfros',
+  description: 'Free software tools to complete tasks faster',
 }
 
 
