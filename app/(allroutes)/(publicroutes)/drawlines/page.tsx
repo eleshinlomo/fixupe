@@ -252,6 +252,7 @@ const Canvas = () => {
               >
                 <option value="transparent">Transparent</option>
                 <option value="white">White</option>
+                <option value="black">Black</option>
                 <option value="red">Red</option>
                 <option value="green">Green</option>
                 <option value="pink">Pink</option>
