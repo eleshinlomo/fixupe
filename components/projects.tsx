@@ -16,12 +16,33 @@ export default function Projects() {
               <h2 className="text-2xl mb-4  font-extrabold text-shadow-2xl">PORTFOLIO</h2>
               
             </div>
+
+
   
             {/* Items */}
             <div className="max-w-sm mx-auto text-white grid gap-6 md:grid-cols-2 lg:grid-cols-3 
             items-start md:max-w-2xl lg:max-w-none">
+
+                {/* Ist item */}
+                <div className="relative flex flex-col items-center p-6 bg-blue-500  rounded-2xl shadow-xl">
+                <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fillRule="evenodd">
+                    <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
+                    <g strokeWidth="2">
+                      <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
+                      <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
+                      <path className="stroke-current text-blue-300" d="M36.571 32H40" />
+                      <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
+                    </g>
+                  </g>
+                </svg>
+                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">ARTIFICIAL INTELLIGENCE</h4>
+                <p className=" text-center">Use our AI solution to solve real problems in a modern way.</p>
+                <a href={MYAFROSAI_URL} target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>
+                  Visit website</button></a>
+              </div>
   
-              {/* 1st item */}
+              {/* 2nd item */}
               <div className="relative flex flex-col items-center p-6 bg-blue-500  rounded-2xl shadow-xl">
                 <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <g fill="none" fillRule="evenodd">
@@ -41,7 +62,7 @@ export default function Projects() {
                   <a href='https://efarms.vercel.app/' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
-              {/* 2nd item */}
+              {/* 3rd item */}
               <div className="relative flex flex-col items-center p-6 bg-blue-500  rounded-2xl shadow-xl">
                 <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <g fill="none" fillRule="evenodd">
@@ -60,24 +81,7 @@ export default function Projects() {
                   <a href='https://fixupe.com' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
-              {/* 3rd item */}
-              <div className="relative flex flex-col items-center p-6 bg-blue-500  rounded-2xl shadow-xl">
-                <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <g fill="none" fillRule="evenodd">
-                    <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
-                    <g strokeWidth="2">
-                      <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
-                      <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
-                      <path className="stroke-current text-blue-300" d="M36.571 32H40" />
-                      <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
-                    </g>
-                  </g>
-                </svg>
-                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">ARTIFICIAL INTELLIGENCE</h4>
-                <p className=" text-center">Use our AI solution to generate images for your projects.</p>
-                <a href={MYAFROSAI_URL} target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>
-                  Visit website</button></a>
-              </div>
+            
   
   
             </div>

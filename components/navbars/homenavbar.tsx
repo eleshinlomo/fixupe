@@ -121,7 +121,11 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-        {isLoggedIn? 
+        <a href='/drawlines'><Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500'>
+            DRAW
+        </Button>
+        </a>
+        {/* {isLoggedIn? 
           <div className='flex gap-3'>
           <Link href='/dashboard/dashboardpage'>
           <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500'>
@@ -133,7 +137,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
             </Button>
           
           </div>
-          :<SigninLandingpage />}
+          :<SigninLandingpage />} */}
 
           {/* <ThemeChanger /> */}
         </div>
