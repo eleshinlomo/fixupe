@@ -179,14 +179,14 @@ const removeName = ()=>{
       <h1 className="text-2xl font-extrabold">
         CREATE A QUICK SKETCH OR E-SIGNATURE. 
       </h1>
-    
-    
-    <div className="flex">
 
-    {/* Controls */}
-    <div className="w-[20%]">
-    {/*Add Name */}
-    {isWritingName  ? <div className=" gap-2 mb-4">
+    
+    {/* Menu Control buttons */}
+    <div className="flex flex-col justify-center w-full items-center pt-6 px-4">
+
+    {/*Add Name input  */}
+    {isWritingName  ? 
+    <div className=" gap-2 mb-4">
         <input 
         onChange={(e)=>setName(e.target.value)}
         placeholder="Write name here"
@@ -195,11 +195,13 @@ const removeName = ()=>{
         <button 
         onClick={addName}
         className='bg-blue-500 roundex-2xl text-white px-2 rounded-2xl'>{selectedName ? 'Modify Name' : 'Add Name'}</button>
-        </div>: null}
+    </div>: null
+    }
         
-    {/* Start of controls buttons*/}
-    <div className="flex flex-col gap-3 justify-start items-center font-extrabold ">
-        <div className="flex justify-center">
+    {/* Start of control buttons*/}
+    <div className="flex  flex-col justify-center items-center w-full gap-3  font-extrabold mx-4">
+
+    <div className="flex ">
           <button onClick={decreaseLineWidth}>
             <ArrowBigDown className="text-blue-500 text-2xl" />
           </button>
@@ -208,13 +210,16 @@ const removeName = ()=>{
             <ArrowBigUp className="text-blue-500 text-2xl" />
           </button>
         </div>
+
+        {/* First button Column */}
+        <div className="flex gap-6">
         
         {/* Clear */}
         <button
           className="bg-blue-500 text-white rounded-2xl px-2"
           onClick={clearDrawing}
         >
-          Clear Draw
+          Clear
         </button>
         
         {/* Date */}
@@ -248,8 +253,12 @@ const removeName = ()=>{
         <button 
         className="bg-blue-500 text-white rounded-2xl px-2"
         onClick={downloadCanvas}>Download</button>
+      </div>
 
-         {/* Change Line Color */}
+{/* 2nd Button Column */}
+  <div className="flex gap-6">
+      {/* Change Line Color */}
+      <div className="">
          <p>Line Color</p>
          <select
          className="bg-white text-black rounded-2xl px-2"
@@ -261,6 +270,7 @@ const removeName = ()=>{
             <option value='red'>Red</option>
 
          </select>
+      </div>
 
         {/* Change BG Color */}
       <div>
@@ -278,13 +288,16 @@ const removeName = ()=>{
             <option value='yellow'>Yellow</option>
         </select>
         </div>
+
+        </div>
+        {/* //Endolumn of 2nd button */}
       
       </div>
       </div>
 
       
     {/* Canvas */}
-       <div className="w-[80%]   shadow-2xl">
+       <div className="w-full   shadow-2xl">
       {/* Error */}
       <p className="text-red-500 font-extrabold pt-5 text-xl">{error ? error : null}</p>
       {/* Show Name */}
@@ -307,7 +320,7 @@ const removeName = ()=>{
       </div>
       </div>
 
-      </div>
+      
 
     </div>
   );
