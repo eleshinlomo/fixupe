@@ -49,8 +49,8 @@ const Canvas = () => {
       c.lineWidth = lWidth; 
       c.lineCap = "round"; // Smooth curves
       c.strokeStyle = lColor; 
-      c.fillStyle = bgColor; // Set initial background color
-      c.fillRect(0, 0, canvas.width, canvas.height); // Fill the canvas background
+      c.fillStyle = bgColor; 
+      c.fillRect(0, 0, canvas.width, canvas.height); 
       
     }
   }, [ctx, bgColor, lColor]); 
@@ -60,7 +60,7 @@ const Canvas = () => {
  
     if (ctx && canvasRef.current) {
       const canvas = canvasRef.current;
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas content
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
       setBgColor('white')
       setLColor('black')
       setCtx(null)
@@ -113,8 +113,8 @@ const Canvas = () => {
       const dataUrl = canvas.toDataURL("image/png"); // Convert canvas to PNG image URL
       const link = document.createElement("a");
       link.href = dataUrl;
-      link.download = "myafros.png"; // Set the download filename
-      link.click(); // Trigger the download
+      link.download = "myafros_signature.png"; 
+      link.click(); 
     }
   };
 
@@ -176,8 +176,8 @@ const removeName = ()=>{
 
     <div className="flex flex-col bg-black text-white text-center overflow-hidden">
 
-      <h1 className="text-2xl font-extrabold">
-        CREATE A QUICK SKETCH OR E-SIGNATURE. 
+      <h1 className="text-2xl font-extrabold px-4">
+        CREATE A QUICK SKETCH OR E-SIGNATURE
       </h1>
 
     
