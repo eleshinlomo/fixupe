@@ -11,7 +11,7 @@ const ModalVideoPage = () => {
             thumbWidth={400}
             thumbHeight={600}
             thumbAlt="Modal video thumbnail"
-            video="/videos/myafros_intro.mp4"
+            video="/videos/draw.mp4"
             modalText = 'Video walk-through'
             videoWidth={1920}
             videoHeight={1080} />

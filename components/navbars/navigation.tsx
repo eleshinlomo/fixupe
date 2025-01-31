@@ -17,7 +17,7 @@ export  const navigation = [
      },
      ,
     {name: "Draw",
-      link: '/drawlines',
+      link: '/draw',
       target: ''
      },
     {name: "Blog",
