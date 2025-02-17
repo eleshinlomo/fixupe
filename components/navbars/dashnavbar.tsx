@@ -10,7 +10,7 @@ import { UserAvatar } from '../user-avater'
 import { userLogout } from '../auth'
 // UserProfile
 import { getUserProfile } from '../userprofile'
-import DatePage from '../date'
+import DatePage from '../date/date'
 import CreditPage from '@/app/(allroutes)/(protectedroutes)/creditpage'
 import { motion } from 'framer-motion'
 import Image from 'next/image'

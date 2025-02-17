@@ -1,6 +1,6 @@
 'use client'
 import {useState, useEffect} from 'react'
-import DatePage from './date'
+import DatePage from './date/date'
 import { Button } from '@/components/ui/button'
 
 const EmployeePageSettings = () => {

@@ -161,8 +161,16 @@ const Canvas = () => {
 
   // Change BG color
   const changeCanvasBGColor = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if(bgColor === 'black' || bgColor === 'transparent'){
+      setLColor('blue')
+    }else{
     setBgColor(e.target.value);
+    }
   };
+
+  
+
+ 
 
   // Change Line Color
   const changeLineColor = (e: React.ChangeEvent<HTMLSelectElement>) => {
