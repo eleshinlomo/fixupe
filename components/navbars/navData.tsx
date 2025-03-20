@@ -20,14 +20,14 @@ export  const navigation = [
       link: '/draw',
       target: ''
      },
-     {name: "WordToPDF",
-      link: '/wordToPdf',
-      target: ''
-     },
-     {name: "Cryptoapps",
-      link: '/cryptoapps',
-      target: ''
-     },
+    //  {name: "WordToPDF",
+    //   link: '/wordToPdf',
+    //   target: ''
+    //  },
+    //  {name: "Cryptoapps",
+    //   link: '/cryptoapps',
+    //   target: ''
+    //  },
     {name: "Blog",
       link: 'https://blog.myafros.com',
        target: '_blank'

@@ -9,7 +9,7 @@ import Logo from '@/public/logos/logo.png'
 import { Button } from '../ui/button';
 import { loginChecker, userLogout } from '../auth';
 import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinlandingpage';
-import { navigation } from './navigation';
+import { navigation } from './navData';
 
 
 interface HomeNavbarProps {
