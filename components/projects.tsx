@@ -16,7 +16,7 @@ export default function Projects() {
               PORTFOLIO
             </h2>
             <p className="text-lg text-gray-400 mt-4">
-              Explore our innovative projects that solve real-world problems with cutting-edge technology.
+              Explore innovative projects that solve real-world problems with cutting-edge technology.
             </p>
           </div>
 
@@ -64,11 +64,11 @@ export default function Projects() {
                   </g>
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">E-FARMS</h4>
+              <h4 className="text-xl font-bold text-white mb-2">ELTEEMA STORE</h4>
               <p className="text-gray-400 text-center mb-6">
-                Fully functional marketplace integrated with Stripe payment.
+              Biggest Online Marketplace in Nigeria.
               </p>
-              <a href="https://efarms.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <a href="https://elteema.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <button className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
                   Visit website
                 </button>

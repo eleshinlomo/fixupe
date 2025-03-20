@@ -5,6 +5,7 @@ import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import {Suspense} from 'react'
+import { GeneralContex } from '@/ContextProviders/generalContext'
 
 
 
@@ -33,9 +34,9 @@ const RootLayout = ({children}: RootLayoutProps)=> {
       
       <body className={inter.className}>
         
-        <Suspense fallback={<div>Loading...</div>}>
+        <GeneralContex>
         {children}
-        </Suspense>
+        </GeneralContex>
         <GoogleTagManager gtmId='G-TWYHZMCD1T' />
         
         

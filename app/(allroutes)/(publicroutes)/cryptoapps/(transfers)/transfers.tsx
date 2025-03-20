@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import axios from 'axios';
-import { fetchEthPrice, fetchSuiPrice } from '../functions';
-import { fetchEthTransactions } from '../functions';
+import { fetchEthPrice, fetchSuiPrice } from '../cryptofunctions';
+import { fetchEthTransactions } from '../cryptofunctions';
 import { Button } from '@/components/ui/button';
 import { buildTransferMarkdown } from '../markdown';
 import ReactMarkdown from 'react-markdown'
