@@ -64,7 +64,7 @@ export default function Projects() {
                   </g>
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">ARTIFICIAL INTELLIGENCE</h4>
+              <h4 className="text-xl font-bold text-white mb-2">MYAFROS AI</h4>
               <p className="text-gray-400 text-center mb-6">
                 Use our AI solution to solve real problems in a modern way.
               </p>
