@@ -38,7 +38,7 @@ export default function Projects() {
                   </g>
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">ELTEEMA STORE</h4>
+              <h4 className="text-xl font-bold text-white mb-2">MYAFROS STORE</h4>
               <p className="text-gray-400 text-center mb-6">
               Biggest Online Marketplace in Nigeria.
               </p>
