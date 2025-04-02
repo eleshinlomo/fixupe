@@ -116,21 +116,6 @@ const Canvas = () => {
     setIsDrawing(false);
   };
 
-  // Download the canvas as a PNG image
-  const downloadCanvas = () => {
-    if (!canvasRef.current) {
-      setError('Canvas is empty');
-      return;
-    }
-    setError('');
-    const canvas = canvasRef.current;
-    const dataUrl = canvas.toDataURL("image/png"); // Convert canvas to PNG image URL
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = "myafros_signature.png";
-    link.click();
-  };
-
   // Name Functions
   const addName = () => {
     setIsWritingName(false);
@@ -175,6 +160,83 @@ const Canvas = () => {
   // Change Line Color
   const changeLineColor = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLColor(e.target.value);
+  };
+
+
+
+  
+  // Download the canvas as a PNG image
+  const downloadCanvas = () => {
+    if (!canvasRef.current || !ctx) {
+      setError('Canvas is empty');
+      return;
+    }
+    setError('');
+    
+    const canvas = canvasRef.current;
+    const tempCanvas = document.createElement('canvas');
+    const tempCtx = tempCanvas.getContext('2d');
+    
+    if (!tempCtx) return;
+  
+    // Get the bounding box of the drawn content
+    const {left, top, width, height} = getDrawnContentBoundingBox(canvas, ctx);
+    
+    // Set the temporary canvas size to match the drawn content
+    tempCanvas.width = width;
+    tempCanvas.height = height;
+    
+    // Fill with white background (or transparent if that's what you want)
+    tempCtx.fillStyle = bgColor === 'transparent' ? 'rgba(0,0,0,0)' : bgColor;
+    tempCtx.fillRect(0, 0, width, height);
+    
+    // Draw only the relevant portion from the main canvas
+    tempCtx.drawImage(
+      canvas,
+      left, top, width, height, // source rectangle
+      0, 0, width, height      // destination rectangle
+    );
+    
+    // Download the cropped image
+    const dataUrl = tempCanvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = "myafros_signature.png";
+    link.click();
+  };
+  
+  // Helper function to find the bounding box of drawn content
+  const getDrawnContentBoundingBox = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+    const {width, height} = canvas;
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const pixels = imageData.data;
+    
+    let minX = width;
+    let minY = height;
+    let maxX = 0;
+    let maxY = 0;
+    
+    // Loop through all pixels to find the boundaries of non-transparent content
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const alpha = pixels[(y * width + x) * 4 + 3];
+        if (alpha > 0) { // If pixel is not transparent
+          minX = Math.min(minX, x);
+          minY = Math.min(minY, y);
+          maxX = Math.max(maxX, x);
+          maxY = Math.max(maxY, y);
+        }
+      }
+    }
+    
+    // Add some padding (10px) around the content
+    const padding = 10;
+    return {
+      left: Math.max(0, minX - padding),
+      top: Math.max(0, minY - padding),
+      width: Math.min(width, maxX - minX + padding * 2),
+      height: Math.min(height, maxY - minY + padding * 2)
+    };
   };
 
   return (
