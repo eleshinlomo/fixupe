@@ -220,7 +220,8 @@ const Canvas = () => {
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const alpha = pixels[(y * width + x) * 4 + 3];
-        if (alpha > 0) { // If pixel is not transparent
+        if (alpha > 0) { 
+          // If pixel is not transparent
           minX = Math.min(minX, x);
           minY = Math.min(minY, y);
           maxX = Math.max(maxX, x);

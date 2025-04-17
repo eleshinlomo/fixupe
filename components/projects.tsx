@@ -21,7 +21,33 @@ export default function Projects() {
           </div>
 
           {/* Items */}
-          <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+          <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-start md:max-w-2xl lg:max-w-none">
+
+                  {/* 1st item */}
+                  <div className="relative flex flex-col items-center p-8 bg-gray-800 rounded-2xl shadow-2xl hover:shadow-blue-500/20 transition-shadow duration-300">
+              <div className="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6">
+                <svg className="w-10 h-10 text-white" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fillRule="evenodd">
+                    <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
+                    <g strokeWidth="2">
+                      <path className="stroke-current text-blue-300" d="M34.514 35.429l2.057 2.285h8M20.571 26.286h5.715l2.057 2.285" />
+                      <path className="stroke-current text-white" d="M20.571 37.714h5.715L36.57 26.286h8" />
+                      <path className="stroke-current text-blue-300" strokeLinecap="square" d="M41.143 34.286l3.428 3.428-3.428 3.429" />
+                      <path className="stroke-current text-white" strokeLinecap="square" d="M41.143 29.714l3.428-3.428-3.428-3.429" />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">PETROLAGE STAFFING</h4>
+              <p className="text-gray-400 text-center mb-6">
+               Find a rewarding career in Nigeria and explore Africa.
+              </p>
+              <a href="https://staffing.petrolage.tech" target="_blank" rel="noopener noreferrer">
+                <button className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
+                  Visit website
+                </button>
+              </a>
+            </div>
 
               {/* 1st item */}
               <div className="relative flex flex-col items-center p-8 bg-gray-800 rounded-2xl shadow-2xl hover:shadow-blue-500/20 transition-shadow duration-300">
@@ -40,7 +66,7 @@ export default function Projects() {
               </div>
               <h4 className="text-xl font-bold text-white mb-2">MYAFROS STORE</h4>
               <p className="text-gray-400 text-center mb-6">
-              Biggest Online Marketplace in Nigeria.
+               Now is time to Shop like an African Prince.
               </p>
               <a href="https://store.myafros.com" target="_blank" rel="noopener noreferrer">
                 <button className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
@@ -91,11 +117,11 @@ export default function Projects() {
                   </g>
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">FIXUPE</h4>
+              <h4 className="text-xl font-bold text-white mb-2">PETROLAGE</h4>
               <p className="text-gray-400 text-center mb-6">
-                Validate your business idea in a minute with an auto-landing page.
+                Welcome to Petrolage group of companies.
               </p>
-              <a href="https://projects.myafros.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://petrolage.tech" target="_blank" rel="noopener noreferrer">
                 <button className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
                   Visit website
                 </button>

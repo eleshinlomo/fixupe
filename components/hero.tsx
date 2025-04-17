@@ -14,23 +14,22 @@ const Hero = () => {
 
   useEffect(() => {
     setCustomText([
-      "AI-Integrated CRM",
+      "Integrated CRM",
       "Image GenAI",
-      "AI Agents",
-      "AI Powered Store"
+      "AI powered APIs",
+      "Distributed systems",
+      "Secured ans scalable platforms"
     ]);
   }, []);
 
   return (
     <div className="bg-black text-white">
       {/* Typewriter Section */}
-      <div className="py-8 bg-gradient-to-r from-blue-600 to-black text-white">
+      <div className="py-8  text-white">
         
           <Typewriter textArray={customText} />
           
-          <div className="py-4">
-          <ModalVideoPage />
-          </div>
+          
         
       </div>
 
