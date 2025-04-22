@@ -46,7 +46,7 @@ export default function Projects() {
               <p className="text-gray-400 text-center mb-6">
                Now is time to Shop like an African Prince.
               </p>
-              <a href="https://elteema.vercel.app" target="_blank" rel="noopener noreferrer">
+              <a href="https://elteema.com" target="_blank" rel="noopener noreferrer">
                 <button className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
                   Visit website
                 </button>
