@@ -107,7 +107,7 @@ export default function Projects() {
   return (
     <section 
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-gray-900 to-black py-20 overflow-hidden"
+      className="relative bg-gradient-to-b from-gray-900 to-black  overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">

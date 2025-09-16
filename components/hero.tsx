@@ -125,7 +125,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+      <div className="relative z-10 container mx-auto px-6 py-2 md:py-2">
         {/* Typewriter Section with enhanced styling */}
         <div className="py-8 text-center">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-sm rounded-full border border-white/10 mb-6">
