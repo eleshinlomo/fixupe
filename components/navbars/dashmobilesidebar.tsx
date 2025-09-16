@@ -5,7 +5,7 @@ import { Menu} from "lucide-react"
 import { Button } from "../ui/button"
 import Sidebar from "./dashsidebar"
 import { SheetContent, Sheet, SheetTrigger } from "../ui/sheet"
-import { UserAvatar } from '../user-avater'
+
 
 
 // URLs

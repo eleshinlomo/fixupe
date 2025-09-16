@@ -4,7 +4,6 @@ import { LogOutIcon, Menu } from "lucide-react"
 import { Button } from "../ui/button"
 import DashMobileSidebar from "./dashmobilesidebar"
 import Link from 'next/link'
-import { UserAvatar } from '../user-avater'
 // import ProfileAvatar  from './profile-avatar'
 // Auth Functions
 import { userLogout } from '../auth'
@@ -91,9 +90,6 @@ const handleToggle = ()=>{
         {/* User Profile */}
         <div className=''>
 
-          <Button size='icon' className='h-6 w-6 mt-5 mr-3' onClick={handleToggle}>
-          <UserAvatar  />
-          </Button>
 
            {isOpen?
           <div>

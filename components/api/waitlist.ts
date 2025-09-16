@@ -21,6 +21,6 @@ export const createWaitList = async (payload: CreateWaitListProps)=>{
     })
 
     if(!response) return 'No response from server'
-    const data = response.json()
+    const data = await response.json()
     return data
 }
