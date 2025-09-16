@@ -3,10 +3,11 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 
 interface TypewriterProps {
+  className: string;
   textArray: string[]
 }
 
-const Typewriter = ({textArray} : TypewriterProps) => {
+const Typewriter = ({textArray, className} : TypewriterProps) => {
 
   const [ text ] = useTypewriter({
     words:textArray,

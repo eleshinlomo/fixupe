@@ -111,7 +111,7 @@ const Footer = ()=>{
             <h6 className="text-white font-medium mb-2">Newsletter</h6>
             <p className="text-sm text-white/80 mb-4">Get the latest news and articles to your inbox every month.</p>
             
-                <NewsletterButton />
+                <NewsletterButton btnText='Subscribe' />
           </div>
           
 

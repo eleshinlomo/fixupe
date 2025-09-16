@@ -4,7 +4,7 @@ import Footer from '@/components/footer'
 import React, {useState, useEffect, Suspense} from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import ChatbotPage from './(publicroutes)/chatbot/page'
+import Chatbot from '@/components/chatbot'
 
 
 
@@ -27,7 +27,6 @@ const AllRoutesLayout = ({children}: AllRoutesProps) => {
     <div className='bg-black text-white'>
     <Suspense fallback={<div>Loading...</div>}>
     {children}
-    <ChatbotPage />
     </Suspense>
     <Footer />
     </div>

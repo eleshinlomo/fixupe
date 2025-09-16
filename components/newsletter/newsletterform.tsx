@@ -3,38 +3,39 @@ import {useState, useEffect} from 'react'
 import { BASE_URL } from '@/components/urls'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { createWaitList } from '../api/waitlist'
+
+interface NewsletterProps {
+  btnText: string;
+}
 
 
-
-const NewsletterForm = ()=>{
+const NewsletterForm = ({btnText}: NewsletterProps )=>{
 
     const [email, setEmail] = useState<string>('')
-    const [message, setMessage] = useState<string>('Subscribe to Newsletter')
+    const [message, setMessage] = useState<string>('')
+   
 
 const HandleEmailWaitlist = async (e:any)=>{
     
     try{
     e.preventDefault()
+    const service = 'myafros'
     const payload = {
+      service,
       email
     }
      console.log(BASE_URL)
-    const response: any = await fetch(`${BASE_URL}/waitlist/`, {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    if(!response.ok) throw new Error("Problem with waitlist server")
-    const data = await response.json()
-    if (!data){
-      setMessage('No response from server')
+    const response: any = await createWaitList(payload)
+  
+    if(response.ok){
+  
+      setMessage(response.message)
+      setEmail('')
     }else{
-      setMessage('Your email has been received')
+      setMessage(response.error)
     }
-    setEmail('')
+    
   }
   catch(err: any){
      setMessage(`"Error": ${err.message}`)
@@ -47,7 +48,7 @@ const HandleEmailWaitlist = async (e:any)=>{
     <div className='w-full'>
       <div className='py-4  text-white font-extrabold '>
   
-            <p className=' py-2  '>{message}</p>
+            <p className=' py-2  '>{message ? message : btnText}</p>
         <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>
           <Input
           className='border border-white px-1  text-white rounded-2xl'
@@ -58,7 +59,7 @@ const HandleEmailWaitlist = async (e:any)=>{
           type='email'
            required /><br/>
            <Button type='submit' className=' bg-blue-900 hover:bg-blue-900 mt-2 md:m-0 rounded-2xl text-white' variant='default'>
-            Subscribe
+            Submit
            </Button>
         </form>
       </div>

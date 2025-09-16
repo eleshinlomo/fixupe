@@ -1,8 +1,13 @@
+import { useState } from "react";
 import NewsletterForm from "./newsletterform";
 
+interface NewsletterProps {
+  btnText: string;
+}
 
+export default function NewsletterPage({btnText}: NewsletterProps ) {
+   
 
-export default function NewsletterPage() {
     return (
       <section className="w-full">
         <div className="  sm:px-6">
@@ -46,7 +51,7 @@ export default function NewsletterPage() {
                     curve in this dynamic AI age.</p>
   
                   {/* CTA form */}
-                  <NewsletterForm/>
+                  <NewsletterForm btnText={btnText}  />
                   
                     <p className="text-sm  mt-3">No spam. You can unsubscribe at any time.</p>
                   
