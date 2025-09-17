@@ -28,10 +28,7 @@ export  const navigation = [
     //   link: '/cryptoapps',
     //   target: ''
     //  },
-    {name: "Blog",
-      link: 'https://blog.myafros.com',
-       target: '_blank'
-     },
+
     
     
   ];
