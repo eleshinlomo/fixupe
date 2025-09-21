@@ -22,9 +22,29 @@ export default function Projects() {
 
   // Project data
   const projects = [
+       {
+      id: 3,
+      title: "FIXUPE AI",
+      description: "AI/Machine Learning Labs",
+      url: 'https://ai.myafros.com',
+      icon: (
+        <svg className="w-10 h-10 text-white" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fillRule="evenodd">
+            <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
+            <g strokeWidth="2">
+              <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
+              <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
+              <path className="stroke-current text-blue-300" d="M36.571 32H40" />
+              <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
+            </g>
+          </g>
+        </svg>
+      ),
+      gradient: "from-purple-500 to-pink-600"
+    },
     {
       id: 1,
-      title: "ELTEEMA STORE",
+      title: "ELTEEMA",
       description: "Ecommerce Marketplace",
       url: "https://elteema.com",
       icon: (
@@ -60,26 +80,6 @@ export default function Projects() {
         </svg>
       ),
       gradient: "from-amber-500 to-orange-600"
-    },
-    {
-      id: 3,
-      title: "MYAFROS AI",
-      description: "AI/Machine Learning Labs",
-      url: 'https://ai.myafros.com',
-      icon: (
-        <svg className="w-10 h-10 text-white" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" fillRule="evenodd">
-            <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
-            <g strokeWidth="2">
-              <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
-              <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
-              <path className="stroke-current text-blue-300" d="M36.571 32H40" />
-              <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
-            </g>
-          </g>
-        </svg>
-      ),
-      gradient: "from-purple-500 to-pink-600"
     },
        {
       id: 2,
@@ -132,7 +132,7 @@ export default function Projects() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6" id='portfolio'>
         <div className="py-12 md:py-20">
 
           {/* Section header with enhanced styling */}

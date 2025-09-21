@@ -10,6 +10,7 @@ import { Button } from '../ui/button';
 import { loginChecker, userLogout } from '../auth';
 import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinlandingpage';
 import { navigation } from './navData';
+import { ScrollToSection } from '../ScrollToSection';
 
 
 interface HomeNavbarProps {
@@ -39,9 +40,8 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
           {({ open }) => (
             <>
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
-                <Link href="/">
+                <Link href="/" className='flex gap-2 items-center justify-center'>
                   <span className="flex items-center space-x-2 text-4xl font-medium  dark:text-gray-100">
-                    <span>
                       <Image
                         src={Logo}
                         alt="N"
@@ -49,9 +49,8 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                         height="32"
                         className="w-8"
                       />
-                    </span>
-                    
                   </span>
+                  <span>FIXUPE</span>
                 </Link>
                  {/* Start of Mobile View */}
                 <Disclosure.Button
@@ -85,13 +84,13 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                           {item.name}
                       </a>
                     ))}
-                    {isLoggedIn? 
+                    {/* {isLoggedIn? 
                      <Link href='/dashboard/dashboardpage'>
                       <Button>
                       Dashboard
                       </Button>
                       </Link>
-                    :<SigninLandingpage  />}
+                    :<SigninLandingpage  />} */}
                   </>
                 </Disclosure.Panel>
                  {/* End of Mobile View */}
@@ -120,11 +119,11 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
           </ul>
         </div>
 
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-        <a href='/draw'><Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500'>
-            DRAW
+        <div className="hidden mr-3 space-x-4 lg:flex nav__item bg-blue-500 text-white rounded-2xl hover:bg-blue-500">
+        <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500' onClick={()=>ScrollToSection('portfolio')}>
+            SEE PORTFOLIO
         </Button>
-        </a>
+        
         {/* {isLoggedIn? 
           <div className='flex gap-3'>
           <Link href='/dashboard/dashboardpage'>

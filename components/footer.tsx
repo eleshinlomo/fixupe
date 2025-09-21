@@ -35,24 +35,24 @@ const Footer = ()=>{
             <h6 className="text-white font-medium mb-2">Projects</h6>
             <ul className="text-sm">
             <li className="mb-2">
-                <Link href="https://myafros.com" className="text-gray-600 hover:text-white 
-                transition duration-150 ease-in-out">My Afros</Link>
+                <Link href="/" className="text-gray-600 hover:text-white 
+                transition duration-150 ease-in-out">Fixupe</Link>
               </li>
               <li className="mb-2">
-                <Link href="/" className="text-gray-600 hover:text-white 
-                transition duration-150 ease-in-out">CRM</Link>
+                <Link href="https://ai.fixupe.com" className="text-gray-600 hover:text-white 
+                transition duration-150 ease-in-out">Media Tools</Link>
               </li>
               
               <li className="mb-2">
-                <a href={`${MYAFROSAI_URL}/genai/image/texttoimgpage`} className="text-gray-600 hover:text-white
+                <a href='https://ai.fixupe.com' className="text-gray-600 hover:text-white
                 transition duration-150 ease-in-out">Image Generator</a>
               </li>
               <li className="mb-2">
-                <a href={`${MYAFROSAI_URL}/voicerecorder`} className="text-gray-600 hover:text-white 
+                <a href='https://ai.fixupe.com' className="text-gray-600 hover:text-white 
                 transition duration-150 ease-in-out">Voice Recorder</a>
               </li>
               <li className="mb-2">
-                <a href={`${MYAFROSAI_URL}/genai/aitranscriber`} className="text-gray-600 hover:text-white
+                <a href='https://ai.fixupe.com' className="text-gray-600 hover:text-white
                 transition duration-150 ease-in-out">Transcriber</a>
               </li>
             </ul>
@@ -151,7 +151,7 @@ const Footer = ()=>{
 
           {/* Copyrights note */}
           <div className="text-sm text-gray-600 mr-4">
-            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2025.</div>
+            &copy; <a href='https://fixupe.com'>fixupe.com</a>. All rights reserved {new Date().getFullYear()}.</div>
 
         </div>
 

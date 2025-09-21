@@ -18,7 +18,7 @@ const Hero = () => {
       "Image GenAI",
       "AI powered APIs",
       "Distributed systems",
-      "Secured and scalable platforms"
+      "Secured and scalable"
     ]);
   }, []);
 
@@ -127,7 +127,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-2 md:py-2">
         {/* Typewriter Section with enhanced styling */}
-        <div className="py-8 text-center">
+        <div className="py-2 text-center">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-sm rounded-full border border-white/10 mb-6">
             <span className="text-sm font-semibold text-blue-300">AI-POWERED SOLUTIONS</span>
           </div>
@@ -145,7 +145,7 @@ const Hero = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-8">
           {/* Text Section */}
           <div className="space-y-8 order-2 md:order-1">
             <div className="border-b border-white/20 pb-6 relative">
@@ -165,7 +165,7 @@ const Hero = () => {
             {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4">
               <a 
-                href={`https://ai.myafros.com`}
+                href={`https://ai.fixupe.com`}
                 className="group relative overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -187,7 +187,7 @@ const Hero = () => {
               </a>
               
               <a 
-                href={`https://ai.myafros.com`}
+                href={`https://ai.fixupe.com`}
                 className="group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:from-purple-700 group-hover:to-pink-700 transition-all duration-300 rounded-full" />
