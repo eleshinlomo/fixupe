@@ -12,7 +12,7 @@ export  const navigation = [
      target: ''
     },
     {name: "AI",
-      link: 'https://ai.myafros.com',
+      link: 'https://ai.fixupe.com',
       target: '_blank'
      },
      ,
