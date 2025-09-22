@@ -118,7 +118,8 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
               </li> */}
           </ul>
         </div>
-
+       
+        
         <div className="hidden mr-3 space-x-4 lg:flex nav__item bg-blue-500 text-white rounded-2xl hover:bg-blue-500">
         <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500' onClick={()=>ScrollToSection('portfolio')}>
             SEE PORTFOLIO
