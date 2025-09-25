@@ -42,12 +42,16 @@ const Footer = ()=>{
           {/* 2nd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h6 className="text-white font-medium mb-2">Projects</h6>
-            <ul className="text-sm">
-            {projects.map((project, i)=><li className="mb-2">
+           
+            {projects.map((project, i)=>
+             <ul className="text-sm" key={i}>
+            <li className="mb-2">
                 <Link href={project.url} className="text-gray-600 hover:text-white 
                 transition duration-150 ease-in-out">{project.name}</Link>
-              </li>)}
-            </ul>
+              </li>
+              </ul>
+            )}
+            
           </div>
 
           {/* 3rd block */}
