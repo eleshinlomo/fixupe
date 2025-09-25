@@ -144,10 +144,7 @@ const Hero = () => {
           </p>
         </div>
 
-        <span className="  bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
-                                text-white text-sm font-medium   rounded-xl px-2 transition-colors">
-            Formerly MyAfros
-          </span>
+      
 
         {/* Hero Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-8">
